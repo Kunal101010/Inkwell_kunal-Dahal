@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-android\\scopedcss\\bundle\\Inkwell_Kunal.styles.css",
+      "PackagePath": "staticwebassets\\Inkwell_Kunal.styles.css"
+    },
+    {
+      "Id": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-android\\staticwebassets\\msbuild.Inkwell_Kunal.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-android\\staticwebassets\\msbuild.Inkwell_Kunal.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-android\\staticwebassets\\msbuild.build.Inkwell_Kunal.props",
+      "PackagePath": "build\\Inkwell_Kunal.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-android\\staticwebassets\\msbuild.buildMultiTargeting.Inkwell_Kunal.props",
+      "PackagePath": "buildMultiTargeting\\Inkwell_Kunal.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-android\\staticwebassets\\msbuild.buildTransitive.Inkwell_Kunal.props",
+      "PackagePath": "buildTransitive\\Inkwell_Kunal.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

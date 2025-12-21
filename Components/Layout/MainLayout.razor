@@ -1,0 +1,35 @@
+﻿@using Inkwell_Kunal.Services
+@inherits LayoutComponentBase
+@inject ThemeService ThemeService
+
+<div class="page @(ThemeService.IsDarkMode ? "dark" : "light")">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <!-- This is the top row where the theme toggle goes -->
+        <div class="top-row px-4">
+            <!-- Your theme toggle button -->
+            <button @onclick="ThemeService.ToggleTheme" class="btn btn-link ms-auto">
+                @(ThemeService.IsDarkMode ? "☀️ Light" : "🌙 Dark")
+            </button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+    }
+}

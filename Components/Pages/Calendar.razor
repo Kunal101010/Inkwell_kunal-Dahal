@@ -1,0 +1,91 @@
+@using Inkwell_Kunal.Services
+@page "/"
+@page "/calendar"
+
+@inject JournalService JournalService
+
+<h3>📅 Journal Calendar</h3>
+
+<div class="mb-3">
+    <label>Select a date:</label>
+    <input type="date" class="form-control w-auto d-inline-block" @bind="SelectedDate" />
+</div>
+
+@if (currentEntry != null)
+{
+    <div class="card mt-3">
+        <div class="card-header">
+            Journal Entry for <strong>@SelectedDate.ToLongDateString()</strong>
+        </div>
+        <div class="card-body">
+            <textarea class="form-control" rows="8" @bind="currentEntry.Content" @bind:event="oninput"></textarea>
+            <button class="btn btn-success mt-2" @onclick="SaveEntry">
+                💾 Save Entry
+            </button>
+            @if (saveMessage != null)
+            {
+                <div class="alert alert-success mt-2">@saveMessage</div>
+            }
+        </div>
+    </div>
+}
+else if (SelectedDate <= DateTime.Today)
+{
+    <div class="mt-4">
+        <p>📝 No journal entry yet for <strong>@SelectedDate.ToLongDateString()</strong>.</p>
+        <button class="btn btn-primary" @onclick="CreateNewEntry">
+            ➕ Create New Entry
+        </button>
+    </div>
+}
+else
+{
+    <p class="text-muted">You can't write journal entries for future dates yet! 😊</p>
+}
+
+@code {
+    private DateTime SelectedDate = DateTime.Today;
+    private JournalEntry? currentEntry;
+    private string? saveMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        JournalService.OnChange += StateHasChanged;
+        await LoadEntryForSelectedDate();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadEntryForSelectedDate();
+    }
+
+    private async Task LoadEntryForSelectedDate()
+    {
+        currentEntry = await JournalService.GetEntryAsync(SelectedDate);
+        saveMessage = null;
+    }
+
+    private async Task CreateNewEntry()
+    {
+        currentEntry = new JournalEntry { Date = SelectedDate, Content = "" };
+        StateHasChanged();
+    }
+
+    private async Task SaveEntry()
+    {
+        if (currentEntry != null)
+        {
+            await JournalService.SaveEntryAsync(SelectedDate, currentEntry.Content);
+            saveMessage = "Entry saved successfully! ✅";
+            // Optional: auto-clear message after 3 seconds
+            await Task.Delay(3000);
+            saveMessage = null;
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        JournalService.OnChange -= StateHasChanged;
+    }
+}
