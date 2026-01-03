@@ -1,0 +1,403 @@
+@page "/journal"
+@using Inkwell_Kunal.Data
+@using Inkwell_Kunal.Data.Models
+@inject IJournalService JournalService
+
+<h3>Journal</h3>
+
+<p>Today's date (UTC): @Today.ToString("yyyy-MM-dd")</p>
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @if (Entry is null)
+    {
+        <div class="card p-3">
+            <div class="row">
+                <div class="col-md-8">
+                    <input placeholder="Title" @bind="NewTitle" class="form-control form-control-lg mb-2" />
+                    <div class="mb-2 d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-secondary" @onclick="() => NewPreview = false">Edit</button>
+                        <button class="btn btn-sm btn-outline-secondary" @onclick="() => NewPreview = true">Preview</button>
+                        <div class="text-muted ms-auto">Word count: @(GetWordCount(NewContent))</div>
+                    </div>
+                    @if (!NewPreview)
+                    {
+                        <textarea placeholder="Write your entry... (Markdown supported)" @bind="NewContent" class="form-control" rows="10"></textarea>
+                    }
+                    else
+                    {
+                        <div class="card p-2 bg-light mt-1" style="min-height:6rem;">
+                            @((MarkupString)Markdig.Markdown.ToHtml(NewContent ?? string.Empty))
+                        </div>
+                    }
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label">Primary Mood <span class="text-danger">*</span></label>
+                        <select class="form-select" @bind="NewPrimaryMood">
+                            <option value="">-- select --</option>
+                            @foreach (var m in AllMoods) { <option value="@m">@m</option>; }
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Secondary Moods (optional)</label>
+                        <div class="d-flex flex-wrap">
+                            @foreach (var m in AllMoods)
+                            {
+                                <div class="form-check me-2">
+                                    <input class="form-check-input" type="checkbox" checked="@NewSecondarySelections.Contains(m)" @onchange="() => ToggleNewSecondary(m)" />
+                                    <label class="form-check-label">@m</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tags</label>
+                        <div class="d-flex flex-wrap">
+                            @foreach (var t in PrebuiltTags.Take(12))
+                            {
+                                <div class="form-check me-2 mb-1">
+                                    <input class="form-check-input" type="checkbox" checked="@NewTagSelections.Contains(t)" @onchange="() => ToggleNewTag(t)" />
+                                    <label class="form-check-label">@t</label>
+                                </div>
+                            }
+                        </div>
+                        <div class="input-group mt-2">
+                            <input class="form-control" placeholder="Add custom tag" @bind="NewCustomTag" />
+                            <button class="btn btn-outline-secondary" @onclick="AddCustomTag">Add</button>
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary" @onclick="Create" disabled="@(string.IsNullOrWhiteSpace(NewPrimaryMood) || string.IsNullOrWhiteSpace(NewTitle))">Create Entry</button>
+                        <button class="btn btn-link mt-2 text-muted" @onclick="ClearNew">Clear</button>
+                    </div>
+                    @if (!string.IsNullOrEmpty(StatusMessage)) { <div class="mt-2 text-danger">@StatusMessage</div> }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h4>Today's entry</h4>
+            @if (!IsEditing)
+            {
+                <div class="card p-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h4 class="mb-1">@Entry.Title</h4>
+                            <div class="text-muted mb-2">@((Entry.Content ?? string.Empty).Substring(0, Math.Min(200, (Entry.Content ?? string.Empty).Length)))</div>
+                            <div class="text-muted">Created: @Entry.CreatedAt.ToString("u")</div>
+                            @if (Entry.UpdatedAt.HasValue)
+                            {
+                                <div class="text-muted">Updated: @Entry.UpdatedAt.Value.ToString("u")</div>
+                            }
+                            <div class="mt-2"><strong>Primary:</strong> @Entry.PrimaryMood</div>
+                            <div><strong>Secondary:</strong> @(Entry.SecondaryMoods.Length == 0 ? "(none)" : string.Join(", ", Entry.SecondaryMoods))</div>
+                            <div><strong>Tags:</strong> @(Entry.Tags.Length == 0 ? "(none)" : string.Join(", ", Entry.Tags))</div>
+                        </div>
+                        <div class="text-end">
+                            <button class="btn btn-outline-secondary mb-2" @onclick="StartEdit">Edit</button>
+                            <button class="btn btn-outline-danger ms-2 mb-2" @onclick="Delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        else
+        {
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-md-8">
+                        <input @bind="EditTitle" class="form-control form-control-lg mb-2" />
+                        <div class="mb-2 d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-secondary" @onclick="() => EditPreview = false">Edit</button>
+                            <button class="btn btn-sm btn-outline-secondary" @onclick="() => EditPreview = true">Preview</button>
+                            <div class="text-muted ms-auto">Word count: @(GetWordCount(EditContent))</div>
+                        </div>
+                        @if (!EditPreview)
+                        {
+                            <textarea @bind="EditContent" class="form-control" rows="8"></textarea>
+                        }
+                        else
+                        {
+                            <div class="card p-2 bg-light mt-1" style="min-height:6rem;">
+                                @((MarkupString)Markdig.Markdown.ToHtml(EditContent ?? string.Empty))
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">Primary Mood <span class="text-danger">*</span></label>
+                            <select class="form-select" @bind="EditPrimaryMood">
+                                <option value="">-- select --</option>
+                                @foreach (var m in AllMoods) { <option value="@m">@m</option>; }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Secondary Moods</label>
+                            <div class="d-flex flex-wrap">
+                                @foreach (var m in AllMoods)
+                                {
+                                    <div class="form-check me-2">
+                                        <input class="form-check-input" type="checkbox" checked="@EditSecondarySelections.Contains(m)" @onchange="() => ToggleEditSecondary(m)" />
+                                        <label class="form-check-label">@m</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tags</label>
+                            <div class="d-flex flex-wrap">
+                                @foreach (var t in PrebuiltTags.Take(12))
+                                {
+                                    <div class="form-check me-2 mb-1">
+                                        <input class="form-check-input" type="checkbox" checked="@EditTagSelections.Contains(t)" @onchange="() => ToggleEditTag(t)" />
+                                        <label class="form-check-label">@t</label>
+                                    </div>
+                                }
+                            </div>
+                            <div class="input-group mt-2">
+                                <input class="form-control" placeholder="Add custom tag" @bind="EditCustomTag" />
+                                <button class="btn btn-outline-secondary" @onclick="AddEditCustomTag">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary" @onclick="SaveEdit" disabled="@(string.IsNullOrWhiteSpace(EditPrimaryMood) || string.IsNullOrWhiteSpace(EditTitle))">Save</button>
+                            <button class="btn btn-light mt-2" @onclick="CancelEdit">Cancel</button>
+                        </div>
+                        @if (!string.IsNullOrEmpty(StatusMessage)) { <div class="mt-2 text-danger">@StatusMessage</div> }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+
+@code {
+    private JournalEntry? Entry;
+    private bool IsLoading = true;
+    private bool IsEditing = false;
+    private string NewTitle = string.Empty;
+    private string? NewContent;
+    private string EditTitle = string.Empty;
+    private string? EditContent;
+    private string? StatusMessage;
+    private DateTime Today = DateTime.UtcNow.Date;
+    private readonly string[] Positive = new[] { "Happy", "Excited", "Relaxed", "Grateful", "Confident" };
+    private readonly string[] Neutral = new[] { "Calm", "Thoughtful", "Curious", "Nostalgic", "Bored" };
+    private readonly string[] Negative = new[] { "Sad", "Angry", "Stressed", "Lonely", "Anxious" };
+    private string[] AllMoods => Positive.Concat(Neutral).Concat(Negative).ToArray();
+    private readonly string[] PrebuiltTags = new[] { "Work", "Career", "Studies", "Family", "Friends", "Relationships", "Health", "Fitness", "Personal Growth", "Self-care", "Hobbies", "Travel", "Nature", "Finance", "Spirituality", "Birthday", "Holiday", "Vacation", "Celebration", "Exercise", "Reading", "Writing", "Cooking", "Meditation", "Yoga", "Music", "Shopping", "Parenting", "Projects", "Planning", "Reflection" };
+
+    // Tag state for create
+    private HashSet<string> NewTagSelections = new();
+    private string NewCustomTag = string.Empty;
+
+    // Tag state for edit
+    private HashSet<string> EditTagSelections = new();
+    private string EditCustomTag = string.Empty;
+
+    private void ToggleNewTag(string tag)
+    {
+        if (NewTagSelections.Contains(tag)) NewTagSelections.Remove(tag);
+        else NewTagSelections.Add(tag);
+    }
+
+    private void ToggleEditTag(string tag)
+    {
+        if (EditTagSelections.Contains(tag)) EditTagSelections.Remove(tag);
+        else EditTagSelections.Add(tag);
+    }
+
+    private void AddCustomTag()
+    {
+        var t = (NewCustomTag ?? string.Empty).Trim();
+        if (!string.IsNullOrEmpty(t))
+        {
+            NewTagSelections.Add(t);
+            NewCustomTag = string.Empty;
+        }
+    }
+
+    private void AddEditCustomTag()
+    {
+        var t = (EditCustomTag ?? string.Empty).Trim();
+        if (!string.IsNullOrEmpty(t))
+        {
+            EditTagSelections.Add(t);
+            EditCustomTag = string.Empty;
+        }
+    }
+
+    // Create fields
+    private string NewPrimaryMood = string.Empty;
+    private HashSet<string> NewSecondarySelections = new();
+    private bool NewPreview = false;
+
+    // Edit fields
+    private string EditPrimaryMood = string.Empty;
+    private HashSet<string> EditSecondarySelections = new();
+    private bool EditPreview = false;
+
+    private void ToggleNewSecondary(string mood)
+    {
+        if (NewSecondarySelections.Contains(mood))
+            NewSecondarySelections.Remove(mood);
+        else
+        {
+            if (NewSecondarySelections.Count < 2) NewSecondarySelections.Add(mood);
+        }
+    }
+
+    private void ToggleEditSecondary(string mood)
+    {
+        if (EditSecondarySelections.Contains(mood))
+            EditSecondarySelections.Remove(mood);
+        else
+        {
+            if (EditSecondarySelections.Count < 2) EditSecondarySelections.Add(mood);
+        }
+    }
+
+    [Inject] private NavigationManager NavManager { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Support optional ?date=YYYY-MM-DD query parameter to view specific date
+        try
+        {
+            var uri = new Uri(NavManager.Uri);
+            var query = uri.Query;
+            if (!string.IsNullOrEmpty(query))
+            {
+                query = query.TrimStart('?');
+                foreach (var part in query.Split('&', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    var kv = part.Split('=', 2);
+                    var key = Uri.UnescapeDataString(kv[0]);
+                    var val = kv.Length > 1 ? Uri.UnescapeDataString(kv[1]) : string.Empty;
+                    if (string.Equals(key, "date", StringComparison.OrdinalIgnoreCase) && DateTime.TryParse(val, out var parsed))
+                    {
+                        Today = parsed.Date;
+                        break;
+                    }
+                }
+            }
+        }
+        catch { }
+
+        await LoadEntry();
+    }
+
+    private async Task LoadEntry()
+    {
+        IsLoading = true;
+        StatusMessage = null;
+        Entry = await JournalService.GetEntryForDateAsync(Today);
+        if (Entry != null)
+        {
+            EditTitle = Entry.Title;
+            EditContent = Entry.Content;
+            EditPrimaryMood = Entry.PrimaryMood;
+            EditSecondarySelections = new HashSet<string>(Entry.SecondaryMoods);
+            EditTagSelections = new HashSet<string>(Entry.Tags);
+        }
+        else
+        {
+            NewPrimaryMood = string.Empty;
+            NewSecondarySelections.Clear();
+        }
+        IsLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task Create()
+    {
+        try
+        {
+            StatusMessage = null;
+            if (string.IsNullOrWhiteSpace(NewPrimaryMood)) throw new InvalidOperationException("Primary mood is required.");
+            var secondary = NewSecondarySelections.Where(m => !string.Equals(m, NewPrimaryMood, StringComparison.OrdinalIgnoreCase)).Take(2).ToArray();
+            var tags = NewTagSelections.ToArray();
+            var created = await JournalService.CreateEntryForTodayAsync(NewTitle, NewContent, NewPrimaryMood, secondary, tags);
+            Entry = created;
+            NewTitle = string.Empty;
+            NewContent = null;
+            NewPrimaryMood = string.Empty;
+            NewSecondarySelections.Clear();
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = ex.Message;
+        }
+    }
+
+    private void StartEdit()
+    {
+        IsEditing = true;
+        StatusMessage = null;
+    }
+
+    private void CancelEdit()
+    {
+        IsEditing = false;
+        if (Entry != null)
+        {
+            EditTitle = Entry.Title;
+            EditContent = Entry.Content;
+        }
+    }
+
+    private async Task SaveEdit()
+    {
+        if (Entry == null) return;
+        try
+        {
+            StatusMessage = null;
+            if (string.IsNullOrWhiteSpace(EditPrimaryMood)) throw new InvalidOperationException("Primary mood is required.");
+            var secondary = EditSecondarySelections.Where(m => !string.Equals(m, EditPrimaryMood, StringComparison.OrdinalIgnoreCase)).Take(2).ToArray();
+            var tags = EditTagSelections.ToArray();
+            var updated = await JournalService.UpdateEntryAsync(Entry.Id, EditTitle, EditContent, EditPrimaryMood, secondary, tags);
+            Entry = updated;
+            IsEditing = false;
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = ex.Message;
+        }
+    }
+
+    private async Task Delete()
+    {
+        if (Entry == null) return;
+        await JournalService.DeleteEntryAsync(Entry.Id);
+        Entry = null;
+    }
+
+    private int GetWordCount(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return 0;
+        var parts = text!.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+        return parts.Length;
+    }
+
+    private void ClearNew()
+    {
+        NewTitle = string.Empty;
+        NewContent = null;
+        NewPrimaryMood = string.Empty;
+        NewSecondarySelections.Clear();
+        NewTagSelections.Clear();
+        NewCustomTag = string.Empty;
+        StatusMessage = null;
+    }
+}
