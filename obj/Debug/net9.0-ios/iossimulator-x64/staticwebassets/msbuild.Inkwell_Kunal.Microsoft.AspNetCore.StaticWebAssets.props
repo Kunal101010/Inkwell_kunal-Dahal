@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>9mvtyoga44</Fingerprint>
-      <Integrity>UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=</Integrity>
+      <Fingerprint>0vm8clk4f5</Fingerprint>
+      <Integrity>vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>
@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ltc5r7x702</Fingerprint>
-      <Integrity>1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=</Integrity>
+      <Fingerprint>3zp1rowcxc</Fingerprint>
+      <Integrity>v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
@@ -84,11 +84,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>klbljquw3d</Fingerprint>
-      <Integrity>+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=</Integrity>
+      <Fingerprint>i0aknpu9t7</Fingerprint>
+      <Integrity>TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Inkwell_Kunal.styles.css'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\editor.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Inkwell_Kunal</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>js/editor.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>mrv88y0k6w</Fingerprint>
+      <Integrity>Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\editor.js'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

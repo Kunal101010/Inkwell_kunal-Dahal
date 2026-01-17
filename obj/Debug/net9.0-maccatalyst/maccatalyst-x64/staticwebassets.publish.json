@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3c1hl7g4Cskrd6WNDN8PJIgTypPl8U+hdpJd5wSit9g=",
+  "Hash": "ur4GAya7AouO7BajWdFZcbklHRx/k+mvqSCo/CdcIpU=",
   "Source": "Inkwell_Kunal",
   "BasePath": "/",
   "Mode": "Root",
@@ -16,6 +16,69 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7c7lhmh1j6",
+      "Integrity": "ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "f96y5mhlyw",
+      "Integrity": "zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\0wz98yz2xy-f96y5mhlyw.gz",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "l40jzb1m5z",
+      "Integrity": "m9nSNX0D4xTv+iEQj4IvVfEHG+66HB5Pq5xrg0RuAdw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js"
+    },
     {
       "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\11t1m3x4dk-8inm30yfxf.gz",
       "SourceId": "Inkwell_Kunal",
@@ -38,12 +101,12 @@
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-9mvtyoga44.gz",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-0vm8clk4f5.gz",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "css/app#[.{fingerprint=9mvtyoga44}]?.css.gz",
+      "RelativePath": "css/app#[.{fingerprint=0vm8clk4f5}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -52,19 +115,19 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\app.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "mtyn3wqt3b",
-      "Integrity": "ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc=",
+      "Fingerprint": "z9z9t33rtv",
+      "Integrity": "KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\app.css"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-klbljquw3d.gz",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-i0aknpu9t7.gz",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Computed",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "Inkwell_Kunal#[.{fingerprint=klbljquw3d}]?.styles.css.gz",
+      "RelativePath": "Inkwell_Kunal#[.{fingerprint=i0aknpu9t7}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -73,8 +136,8 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\bundle\\Inkwell_Kunal.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3cljfcg10p",
-      "Integrity": "w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=",
+      "Fingerprint": "tnwtk7d0ta",
+      "Integrity": "mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\bundle\\Inkwell_Kunal.styles.css"
@@ -101,12 +164,12 @@
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-ltc5r7x702.gz",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-3zp1rowcxc.gz",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "index#[.{fingerprint=ltc5r7x702}]?.html.gz",
+      "RelativePath": "index#[.{fingerprint=3zp1rowcxc}]?.html.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -115,11 +178,32 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "q4q2pc9dbw",
-      "Integrity": "yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY=",
+      "Fingerprint": "ev98s5q57n",
+      "Integrity": "BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\0wz98yz2xy-f96y5mhlyw.br",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.js.br",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "br",
+      "Fingerprint": "po7sqkxlhh",
+      "Integrity": "6Y/0S2ZoHhAmp6YQm7jRZaTzqTCbErehOtBrDCaPjDc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js"
     },
     {
       "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\11t1m3x4dk-8inm30yfxf.br",
@@ -143,12 +227,12 @@
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-9mvtyoga44.br",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-0vm8clk4f5.br",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
       "BasePath": "/",
-      "RelativePath": "css/app#[.{fingerprint=9mvtyoga44}]?.css.br",
+      "RelativePath": "css/app#[.{fingerprint=0vm8clk4f5}]?.css.br",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -157,19 +241,19 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\app.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
-      "Fingerprint": "sf8miqj5p3",
-      "Integrity": "OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU=",
+      "Fingerprint": "i3pp63ultk",
+      "Integrity": "suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\app.css"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-klbljquw3d.br",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-i0aknpu9t7.br",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Computed",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
       "BasePath": "/",
-      "RelativePath": "Inkwell_Kunal#[.{fingerprint=klbljquw3d}]?.styles.css.br",
+      "RelativePath": "Inkwell_Kunal#[.{fingerprint=i0aknpu9t7}]?.styles.css.br",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -178,8 +262,8 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\bundle\\Inkwell_Kunal.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
-      "Fingerprint": "ruqnje36k2",
-      "Integrity": "TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=",
+      "Fingerprint": "zbub3vndvv",
+      "Integrity": "T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\bundle\\Inkwell_Kunal.styles.css"
@@ -206,12 +290,12 @@
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-ltc5r7x702.br",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-3zp1rowcxc.br",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
       "BasePath": "/",
-      "RelativePath": "index#[.{fingerprint=ltc5r7x702}]?.html.br",
+      "RelativePath": "index#[.{fingerprint=3zp1rowcxc}]?.html.br",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -220,19 +304,61 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
-      "Fingerprint": "z6stmv4ong",
-      "Integrity": "+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU=",
+      "Fingerprint": "9q7dwgt7vk",
+      "Integrity": "n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-klbljquw3d.br",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\tzxjg6is5z-7c7lhmh1j6.br",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.css.br",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "br",
+      "Fingerprint": "nqlmzpi1ut",
+      "Integrity": "j34KIEOwv1t1gviSOGhPUL4fxfsOFSe7tsddq6BAMP8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\yg2uqpetem-mrv88y0k6w.br",
+      "SourceId": "Inkwell_Kunal",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
+      "BasePath": "/",
+      "RelativePath": "js/editor#[.{fingerprint=mrv88y0k6w}]?.js.br",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "br",
+      "Fingerprint": "lw6zun3m97",
+      "Integrity": "tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-i0aknpu9t7.br",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Computed",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\",
       "BasePath": "/",
-      "RelativePath": "Inkwell_Kunal#[.{fingerprint=klbljquw3d}]!.bundle.scp.css.br",
+      "RelativePath": "Inkwell_Kunal#[.{fingerprint=i0aknpu9t7}]!.bundle.scp.css.br",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -241,19 +367,61 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\projectbundle\\Inkwell_Kunal.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
-      "Fingerprint": "ruqnje36k2",
-      "Integrity": "TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=",
+      "Fingerprint": "zbub3vndvv",
+      "Integrity": "T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\projectbundle\\Inkwell_Kunal.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-klbljquw3d.gz",
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\tzxjg6is5z-7c7lhmh1j6.gz",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "t448ycr2mi",
+      "Integrity": "E/dBooiRyBeRUuBpMpZIjAS47x9v/lnLs9Jbq6E8adM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\yg2uqpetem-mrv88y0k6w.gz",
+      "SourceId": "Inkwell_Kunal",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "js/editor#[.{fingerprint=mrv88y0k6w}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "5jbsfsjh1c",
+      "Integrity": "YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-i0aknpu9t7.gz",
       "SourceId": "Inkwell_Kunal",
       "SourceType": "Computed",
       "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "Inkwell_Kunal#[.{fingerprint=klbljquw3d}]!.bundle.scp.css.gz",
+      "RelativePath": "Inkwell_Kunal#[.{fingerprint=i0aknpu9t7}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -262,8 +430,8 @@
       "RelatedAsset": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\projectbundle\\Inkwell_Kunal.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3cljfcg10p",
-      "Integrity": "w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=",
+      "Fingerprint": "tnwtk7d0ta",
+      "Integrity": "mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\projectbundle\\Inkwell_Kunal.bundle.scp.css"
@@ -283,8 +451,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "klbljquw3d",
-      "Integrity": "+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=",
+      "Fingerprint": "i0aknpu9t7",
+      "Integrity": "TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\bundle\\Inkwell_Kunal.styles.css"
@@ -304,8 +472,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "klbljquw3d",
-      "Integrity": "+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=",
+      "Fingerprint": "i0aknpu9t7",
+      "Integrity": "TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\projectbundle\\Inkwell_Kunal.bundle.scp.css"
@@ -325,8 +493,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "9mvtyoga44",
-      "Integrity": "UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=",
+      "Fingerprint": "0vm8clk4f5",
+      "Integrity": "vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\app.css"
@@ -388,22 +556,117 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ltc5r7x702",
-      "Integrity": "1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=",
+      "Fingerprint": "3zp1rowcxc",
+      "Integrity": "v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js",
+      "SourceId": "Inkwell_Kunal",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/editor#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mrv88y0k6w",
+      "Integrity": "Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\editor.js"
     }
   ],
   "Endpoints": [
     {
-      "Route": "css/app.9mvtyoga44.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-9mvtyoga44.gz",
+      "Route": "_content/MudBlazor/MudBlazor.min.7c7lhmh1j6.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "610885"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7c7lhmh1j6"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/MudBlazor/MudBlazor.min.css"
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "610885"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\tzxjg6is5z-7c7lhmh1j6.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000541418517"
+          "Value": "br",
+          "Quality": "0.000024167432"
         }
       ],
       "ResponseHeaders": [
@@ -413,15 +676,489 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1846"
+          "Value": "41377"
         },
         {
           "Name": "ETag",
-          "Value": "\"ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc=\""
+          "Value": "\"j34KIEOwv1t1gviSOGhPUL4fxfsOFSe7tsddq6BAMP8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\tzxjg6is5z-7c7lhmh1j6.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000015261118"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "65525"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"E/dBooiRyBeRUuBpMpZIjAS47x9v/lnLs9Jbq6E8adM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZzHmYioOIMEX9F8thiw1Sc+cGGFHLtMWI4q4uvO13CQ="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.css.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\tzxjg6is5z-7c7lhmh1j6.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41377"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"j34KIEOwv1t1gviSOGhPUL4fxfsOFSe7tsddq6BAMP8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-j34KIEOwv1t1gviSOGhPUL4fxfsOFSe7tsddq6BAMP8="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.css.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\tzxjg6is5z-7c7lhmh1j6.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "65525"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"E/dBooiRyBeRUuBpMpZIjAS47x9v/lnLs9Jbq6E8adM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-E/dBooiRyBeRUuBpMpZIjAS47x9v/lnLs9Jbq6E8adM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.f96y5mhlyw.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "75407"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f96y5mhlyw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/MudBlazor/MudBlazor.min.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\staticwebassets\\MudBlazor.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "75407"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\0wz98yz2xy-f96y5mhlyw.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000060591372"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16503"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"m9nSNX0D4xTv+iEQj4IvVfEHG+66HB5Pq5xrg0RuAdw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\0wz98yz2xy-f96y5mhlyw.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.000070511917"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14181"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Y/0S2ZoHhAmp6YQm7jRZaTzqTCbErehOtBrDCaPjDc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zR6goaoMpR/YVMMSTfCmVNo3kuPgOkjF/ovhkUhAkbk="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.js.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\0wz98yz2xy-f96y5mhlyw.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14181"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Y/0S2ZoHhAmp6YQm7jRZaTzqTCbErehOtBrDCaPjDc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6Y/0S2ZoHhAmp6YQm7jRZaTzqTCbErehOtBrDCaPjDc="
+        }
+      ]
+    },
+    {
+      "Route": "_content/MudBlazor/MudBlazor.min.js.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\0wz98yz2xy-f96y5mhlyw.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16503"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"m9nSNX0D4xTv+iEQj4IvVfEHG+66HB5Pq5xrg0RuAdw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Nov 2025 03:42:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-m9nSNX0D4xTv+iEQj4IvVfEHG+66HB5Pq5xrg0RuAdw="
+        }
+      ]
+    },
+    {
+      "Route": "css/app.0vm8clk4f5.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-0vm8clk4f5.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000436109900"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2292"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -441,13 +1178,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=\""
+          "Value": "W/\"vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9mvtyoga44"
+          "Value": "0vm8clk4f5"
         },
         {
           "Name": "label",
@@ -455,18 +1192,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s="
+          "Value": "sha256-vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk="
         }
       ]
     },
     {
-      "Route": "css/app.9mvtyoga44.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-9mvtyoga44.br",
+      "Route": "css/app.0vm8clk4f5.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-0vm8clk4f5.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000640614990"
+          "Quality": "0.000520020801"
         }
       ],
       "ResponseHeaders": [
@@ -476,15 +1213,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1560"
+          "Value": "1922"
         },
         {
           "Name": "ETag",
-          "Value": "\"OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU=\""
+          "Value": "\"suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -504,13 +1241,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=\""
+          "Value": "W/\"vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9mvtyoga44"
+          "Value": "0vm8clk4f5"
         },
         {
           "Name": "label",
@@ -518,12 +1255,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s="
+          "Value": "sha256-vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk="
         }
       ]
     },
     {
-      "Route": "css/app.9mvtyoga44.css",
+      "Route": "css/app.0vm8clk4f5.css",
       "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\css\\app.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -533,7 +1270,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3559"
+          "Value": "4867"
         },
         {
           "Name": "Content-Type",
@@ -541,11 +1278,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=\""
+          "Value": "\"vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -555,7 +1292,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9mvtyoga44"
+          "Value": "0vm8clk4f5"
         },
         {
           "Name": "label",
@@ -563,13 +1300,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s="
+          "Value": "sha256-vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk="
         }
       ]
     },
     {
-      "Route": "css/app.9mvtyoga44.css.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-9mvtyoga44.br",
+      "Route": "css/app.0vm8clk4f5.css.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-0vm8clk4f5.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -578,7 +1315,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1560"
+          "Value": "1922"
         },
         {
           "Name": "Content-Type",
@@ -586,11 +1323,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU=\""
+          "Value": "\"suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -608,7 +1345,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9mvtyoga44"
+          "Value": "0vm8clk4f5"
         },
         {
           "Name": "label",
@@ -616,13 +1353,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU="
+          "Value": "sha256-suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM="
         }
       ]
     },
     {
-      "Route": "css/app.9mvtyoga44.css.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-9mvtyoga44.gz",
+      "Route": "css/app.0vm8clk4f5.css.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-0vm8clk4f5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -631,7 +1368,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1846"
+          "Value": "2292"
         },
         {
           "Name": "Content-Type",
@@ -639,11 +1376,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc=\""
+          "Value": "\"KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -661,7 +1398,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9mvtyoga44"
+          "Value": "0vm8clk4f5"
         },
         {
           "Name": "label",
@@ -669,18 +1406,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc="
+          "Value": "sha256-KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw="
         }
       ]
     },
     {
       "Route": "css/app.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-9mvtyoga44.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-0vm8clk4f5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000541418517"
+          "Quality": "0.000436109900"
         }
       ],
       "ResponseHeaders": [
@@ -690,15 +1427,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1846"
+          "Value": "2292"
         },
         {
           "Name": "ETag",
-          "Value": "\"ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc=\""
+          "Value": "\"KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -718,24 +1455,24 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=\""
+          "Value": "W/\"vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s="
+          "Value": "sha256-vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk="
         }
       ]
     },
     {
       "Route": "css/app.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-9mvtyoga44.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-0vm8clk4f5.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000640614990"
+          "Quality": "0.000520020801"
         }
       ],
       "ResponseHeaders": [
@@ -745,15 +1482,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1560"
+          "Value": "1922"
         },
         {
           "Name": "ETag",
-          "Value": "\"OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU=\""
+          "Value": "\"suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -773,13 +1510,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=\""
+          "Value": "W/\"vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s="
+          "Value": "sha256-vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk="
         }
       ]
     },
@@ -794,7 +1531,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3559"
+          "Value": "4867"
         },
         {
           "Name": "Content-Type",
@@ -802,11 +1539,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s=\""
+          "Value": "\"vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -816,13 +1553,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UYdfc0vBBHFZfBgbqe9yl2lQ7oqPlhZpJIbmQgU1c0s="
+          "Value": "sha256-vGXCcIQwzoRmRXLicz1qv4TrSaIiaOwihHFndoS3VXk="
         }
       ]
     },
     {
       "Route": "css/app.css.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-9mvtyoga44.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\1ofbxmrgcn-0vm8clk4f5.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -831,7 +1568,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1560"
+          "Value": "1922"
         },
         {
           "Name": "Content-Type",
@@ -839,11 +1576,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU=\""
+          "Value": "\"suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -861,13 +1598,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-OD7MfB77b+FIemlhNU2OPLxp/s2HXQleFU0j5wfZeLU="
+          "Value": "sha256-suLHkaa/u4vl5+mBctYNCqN52CnBHRbPPuP8nfwSoIM="
         }
       ]
     },
     {
       "Route": "css/app.css.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-9mvtyoga44.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\1ofbxmrgcn-0vm8clk4f5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -876,7 +1613,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1846"
+          "Value": "2292"
         },
         {
           "Name": "Content-Type",
@@ -884,11 +1621,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc=\""
+          "Value": "\"KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 17:34:04 GMT"
+          "Value": "Sat, 17 Jan 2026 16:04:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -906,7 +1643,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ClMWKrBPd/I1DWijZ53GoZPBb5GOo2yqieSwiheE/Yc="
+          "Value": "sha256-KcwKQWuzJsrFccY/cB+bAZgP//wdKbRPBjLO84KMNGw="
         }
       ]
     },
@@ -1939,13 +2676,13 @@
       ]
     },
     {
-      "Route": "index.html",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-ltc5r7x702.gz",
+      "Route": "index.3zp1rowcxc.html",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-3zp1rowcxc.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.002252252252"
+          "Quality": "0.001543209877"
         }
       ],
       "ResponseHeaders": [
@@ -1955,19 +2692,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "443"
+          "Value": "647"
         },
         {
           "Name": "ETag",
-          "Value": "\"yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY=\""
+          "Value": "\"BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -1983,24 +2720,32 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=\""
+          "Value": "W/\"v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "3zp1rowcxc"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU="
+          "Value": "sha256-v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c="
         }
       ]
     },
     {
-      "Route": "index.html",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-ltc5r7x702.br",
+      "Route": "index.3zp1rowcxc.html",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-3zp1rowcxc.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.003205128205"
+          "Quality": "0.002123142251"
         }
       ],
       "ResponseHeaders": [
@@ -2010,19 +2755,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "311"
+          "Value": "470"
         },
         {
           "Name": "ETag",
-          "Value": "\"+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU=\""
+          "Value": "\"n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -2038,18 +2783,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=\""
+          "Value": "W/\"v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "3zp1rowcxc"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU="
+          "Value": "sha256-v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c="
         }
       ]
     },
     {
-      "Route": "index.html",
+      "Route": "index.3zp1rowcxc.html",
       "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2059,7 +2812,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "859"
+          "Value": "1360"
         },
         {
           "Name": "Content-Type",
@@ -2067,264 +2820,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=\""
+          "Value": "\"v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU="
-        }
-      ]
-    },
-    {
-      "Route": "index.html.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-ltc5r7x702.br",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "311"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU="
-        }
-      ]
-    },
-    {
-      "Route": "index.html.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-ltc5r7x702.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "443"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY="
-        }
-      ]
-    },
-    {
-      "Route": "index.ltc5r7x702.html",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-ltc5r7x702.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.002252252252"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "443"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ltc5r7x702"
-        },
-        {
-          "Name": "label",
-          "Value": "index.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU="
-        }
-      ]
-    },
-    {
-      "Route": "index.ltc5r7x702.html",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-ltc5r7x702.br",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.003205128205"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "311"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ltc5r7x702"
-        },
-        {
-          "Name": "label",
-          "Value": "index.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU="
-        }
-      ]
-    },
-    {
-      "Route": "index.ltc5r7x702.html",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "859"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2334,7 +2834,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ltc5r7x702"
+          "Value": "3zp1rowcxc"
         },
         {
           "Name": "label",
@@ -2342,13 +2842,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1+jwajb4RhTiRWA/aRSKC4+oqXS6KhPO1bsr2cfDaqU="
+          "Value": "sha256-v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c="
         }
       ]
     },
     {
-      "Route": "index.ltc5r7x702.html.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-ltc5r7x702.br",
+      "Route": "index.3zp1rowcxc.html.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-3zp1rowcxc.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2357,7 +2857,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "311"
+          "Value": "470"
         },
         {
           "Name": "Content-Type",
@@ -2365,11 +2865,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU=\""
+          "Value": "\"n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2387,7 +2887,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ltc5r7x702"
+          "Value": "3zp1rowcxc"
         },
         {
           "Name": "label",
@@ -2395,13 +2895,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+yW8eEVJ5TgaEshxUUCwvRKC9wTC3SvI/OZD4b/XIHU="
+          "Value": "sha256-n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM="
         }
       ]
     },
     {
-      "Route": "index.ltc5r7x702.html.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-ltc5r7x702.gz",
+      "Route": "index.3zp1rowcxc.html.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-3zp1rowcxc.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2410,7 +2910,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "443"
+          "Value": "647"
         },
         {
           "Name": "Content-Type",
@@ -2418,11 +2918,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY=\""
+          "Value": "\"BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 15:29:53 GMT"
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2440,7 +2940,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ltc5r7x702"
+          "Value": "3zp1rowcxc"
         },
         {
           "Name": "label",
@@ -2448,18 +2948,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-yik+rwV6cT1AV17c7rGTS3VIqEynn1iGPAXNXqKTmTY="
+          "Value": "sha256-BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.bundle.scp.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-klbljquw3d.br",
+      "Route": "index.html",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-3zp1rowcxc.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.000739098300"
+          "Value": "gzip",
+          "Quality": "0.001543209877"
         }
       ],
       "ResponseHeaders": [
@@ -2469,15 +2969,252 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "647"
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-3zp1rowcxc.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.002123142251"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "470"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1360"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v5RieeoMerMadgNd+zjmJ+JMHK+nAlUp41rCzfu900c="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\6y8nx5p75f-3zp1rowcxc.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "470"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-n6dwp2bL/nrdqjv+xgxWETwHG5qqQrcrWuQzkZxFSQM="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\6y8nx5p75f-3zp1rowcxc.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "647"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 17:17:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BmxVcyt3zjDBC/jXBIUSfhaQXWOADZqR2A8vhDyEzwg="
+        }
+      ]
+    },
+    {
+      "Route": "Inkwell_Kunal.bundle.scp.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-i0aknpu9t7.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.000695894224"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1436"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2497,24 +3234,24 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.bundle.scp.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-klbljquw3d.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-i0aknpu9t7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000613496933"
+          "Quality": "0.000570776256"
         }
       ],
       "ResponseHeaders": [
@@ -2524,15 +3261,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2552,13 +3289,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
@@ -2573,7 +3310,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5481"
+          "Value": "6115"
         },
         {
           "Name": "Content-Type",
@@ -2581,11 +3318,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2595,13 +3332,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.bundle.scp.css.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-klbljquw3d.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-i0aknpu9t7.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2610,7 +3347,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "Content-Type",
@@ -2618,11 +3355,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2640,13 +3377,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY="
+          "Value": "sha256-T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.bundle.scp.css.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-klbljquw3d.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-i0aknpu9t7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2655,7 +3392,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "Content-Type",
@@ -2663,11 +3400,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2685,18 +3422,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM="
+          "Value": "sha256-mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.bundle.scp.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-klbljquw3d.br",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.bundle.scp.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-i0aknpu9t7.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000739098300"
+          "Quality": "0.000695894224"
         }
       ],
       "ResponseHeaders": [
@@ -2706,15 +3443,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2734,13 +3471,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -2748,18 +3485,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.bundle.scp.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-klbljquw3d.gz",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.bundle.scp.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-i0aknpu9t7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000613496933"
+          "Quality": "0.000570776256"
         }
       ],
       "ResponseHeaders": [
@@ -2769,15 +3506,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2797,13 +3534,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -2811,12 +3548,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.bundle.scp.css",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.bundle.scp.css",
       "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\projectbundle\\Inkwell_Kunal.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2826,7 +3563,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5481"
+          "Value": "6115"
         },
         {
           "Name": "Content-Type",
@@ -2834,11 +3571,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2848,7 +3585,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -2856,13 +3593,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.bundle.scp.css.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-klbljquw3d.br",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.bundle.scp.css.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\ymx2z1mstz-i0aknpu9t7.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2871,7 +3608,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "Content-Type",
@@ -2879,11 +3616,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2901,7 +3638,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -2909,13 +3646,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY="
+          "Value": "sha256-T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.bundle.scp.css.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-klbljquw3d.gz",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.bundle.scp.css.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\ymx2z1mstz-i0aknpu9t7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2924,7 +3661,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "Content-Type",
@@ -2932,11 +3669,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2954,7 +3691,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -2962,18 +3699,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM="
+          "Value": "sha256-mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.styles.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-klbljquw3d.gz",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.styles.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-i0aknpu9t7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000613496933"
+          "Quality": "0.000570776256"
         }
       ],
       "ResponseHeaders": [
@@ -2983,15 +3720,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3011,13 +3748,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -3025,18 +3762,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.styles.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-klbljquw3d.br",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.styles.css",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-i0aknpu9t7.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000739098300"
+          "Quality": "0.000695894224"
         }
       ],
       "ResponseHeaders": [
@@ -3046,15 +3783,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3074,13 +3811,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -3088,12 +3825,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.styles.css",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.styles.css",
       "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\scopedcss\\bundle\\Inkwell_Kunal.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3103,7 +3840,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5481"
+          "Value": "6115"
         },
         {
           "Name": "Content-Type",
@@ -3111,11 +3848,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3125,7 +3862,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -3133,13 +3870,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.styles.css.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-klbljquw3d.br",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.styles.css.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-i0aknpu9t7.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3148,7 +3885,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "Content-Type",
@@ -3156,11 +3893,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3178,7 +3915,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -3186,13 +3923,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY="
+          "Value": "sha256-T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk="
         }
       ]
     },
     {
-      "Route": "Inkwell_Kunal.klbljquw3d.styles.css.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-klbljquw3d.gz",
+      "Route": "Inkwell_Kunal.i0aknpu9t7.styles.css.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-i0aknpu9t7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3201,7 +3938,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "Content-Type",
@@ -3209,11 +3946,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3231,7 +3968,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "klbljquw3d"
+          "Value": "i0aknpu9t7"
         },
         {
           "Name": "label",
@@ -3239,18 +3976,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM="
+          "Value": "sha256-mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.styles.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-klbljquw3d.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-i0aknpu9t7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000613496933"
+          "Quality": "0.000570776256"
         }
       ],
       "ResponseHeaders": [
@@ -3260,15 +3997,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3288,24 +4025,24 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.styles.css",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-klbljquw3d.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-i0aknpu9t7.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000739098300"
+          "Quality": "0.000695894224"
         }
       ],
       "ResponseHeaders": [
@@ -3315,15 +4052,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3343,13 +4080,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "W/\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
@@ -3364,7 +4101,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5481"
+          "Value": "6115"
         },
         {
           "Name": "Content-Type",
@@ -3372,11 +4109,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0=\""
+          "Value": "\"TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3386,13 +4123,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+KhN104BK0x0F1FB4JlfyzVJ3TfA/GfkpwGrKVTMLu0="
+          "Value": "sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.styles.css.br",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-klbljquw3d.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\3fs87apccl-i0aknpu9t7.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3401,7 +4138,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1352"
+          "Value": "1436"
         },
         {
           "Name": "Content-Type",
@@ -3409,11 +4146,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY=\""
+          "Value": "\"T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3431,13 +4168,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TX2UE09q7FjvtArmIZ5e+1Dag1CfCM2w03hNSlLeGZY="
+          "Value": "sha256-T93dybNc9hRmpTdED3K3Tyv6o/Y6KUY3f1htdBDA7hk="
         }
       ]
     },
     {
       "Route": "Inkwell_Kunal.styles.css.gz",
-      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-klbljquw3d.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\3fs87apccl-i0aknpu9t7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3446,7 +4183,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1629"
+          "Value": "1751"
         },
         {
           "Name": "Content-Type",
@@ -3454,11 +4191,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM=\""
+          "Value": "\"mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 20 Dec 2025 19:07:35 GMT"
+          "Value": "Sat, 17 Jan 2026 17:29:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3476,7 +4213,521 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-w1EhI1qI8VcOpHBUSDkO9GdLpcdUqKhej5ryDp9BNZM="
+          "Value": "sha256-mSoJVA6FWP5Wn4dyuTZAKpIl9fOVJ+KpjxVEXAkRHp8="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\yg2uqpetem-mrv88y0k6w.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.001483679525"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "673"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\yg2uqpetem-mrv88y0k6w.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001293661061"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "772"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.js.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\yg2uqpetem-mrv88y0k6w.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "673"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.js.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\yg2uqpetem-mrv88y0k6w.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.mrv88y0k6w.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\yg2uqpetem-mrv88y0k6w.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.001483679525"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "673"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mrv88y0k6w"
+        },
+        {
+          "Name": "label",
+          "Value": "js/editor.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.mrv88y0k6w.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\yg2uqpetem-mrv88y0k6w.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001293661061"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "772"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mrv88y0k6w"
+        },
+        {
+          "Name": "label",
+          "Value": "js/editor.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.mrv88y0k6w.js",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mrv88y0k6w"
+        },
+        {
+          "Name": "label",
+          "Value": "js/editor.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lt2PfgzdUwbGpGIsPfVMaZtu3vOf67k7BjxZg4A/7+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.mrv88y0k6w.js.br",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\publish\\yg2uqpetem-mrv88y0k6w.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "673"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mrv88y0k6w"
+        },
+        {
+          "Name": "label",
+          "Value": "js/editor.js.br"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tVc6rhWxYSleyPlMuSJdt9DNoQPYlu+jdgiW6cEdTl4="
+        }
+      ]
+    },
+    {
+      "Route": "js/editor.mrv88y0k6w.js.gz",
+      "AssetFile": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\obj\\Debug\\net9.0-maccatalyst\\maccatalyst-x64\\compressed\\yg2uqpetem-mrv88y0k6w.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 Jan 2026 15:50:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mrv88y0k6w"
+        },
+        {
+          "Name": "label",
+          "Value": "js/editor.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YfjfGvtJroxC1n27z+N6AIlYdjFtIp938KKANOYYsvw="
         }
       ]
     }

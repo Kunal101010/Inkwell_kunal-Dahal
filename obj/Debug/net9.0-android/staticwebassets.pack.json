@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "D:\\Desktop\\Inkwell_Kunal\\Inkwell_Kunal\\wwwroot\\js\\editor.js",
+      "PackagePath": "staticwebassets\\js\\editor.js"
+    },
+    {
       "Id": "obj\\Debug\\net9.0-android\\staticwebassets\\msbuild.Inkwell_Kunal.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
