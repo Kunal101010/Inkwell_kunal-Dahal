@@ -1,20 +1,179 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Inkwell_Kunal</a>
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using MudBlazor
+@using Inkwell_Kunal.Services
+@inject AuthenticationService authService
+
+<div class="nav-sidebar">
+    <!-- App Header -->
+    <div class="nav-header">
+        <div class="app-logo">
+            <MudIcon Icon="@Icons.Material.Filled.Edit" Size="Size.Large" Color="Color.Primary" />
+            <span class="app-title">Inkwell</span>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <MudNavMenu Class="nav-menu" Color="Color.Primary" Bordered="false" Rounded="false">
+        <!-- Dashboard -->
+        <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard" IconColor="Color.Primary">
+            Dashboard
+        </MudNavLink>
+
+        <!-- Write Journal -->
+        <MudNavLink Href="/calendar" Icon="@Icons.Material.Filled.Edit" IconColor="Color.Secondary">
+            Write Journal
+        </MudNavLink>
+
+        <!-- Calendar View -->
+        <MudNavLink Href="/calendar-view" Icon="@Icons.Material.Filled.CalendarMonth" IconColor="Color.Tertiary">
+            Calendar View
+        </MudNavLink>
+
+        <!-- Journal Entries -->
+        <MudNavLink Href="/entries" Icon="@Icons.Material.Filled.List" IconColor="Color.Info">
+            Journal Entries
+        </MudNavLink>
+
+        <!-- Search & Filter -->
+        <MudNavLink Href="/search" Icon="@Icons.Material.Filled.Search" IconColor="Color.Warning">
+            Search & Filter
+        </MudNavLink>
+
+        <!-- Analytics Section -->
+        <MudNavGroup Title="Analytics" Icon="@Icons.Material.Filled.Analytics" Expanded="false">
+            <MudNavLink Href="/mood-analytics" Icon="@Icons.Material.Filled.Mood" IconColor="Color.Success">
+                Mood Analytics
+            </MudNavLink>
+            <MudNavLink Href="/streak-tracking" Icon="@Icons.Material.Filled.Timeline" IconColor="Color.Error">
+                Streak Tracking
+            </MudNavLink>
+            <MudNavLink Href="/insights" Icon="@Icons.Material.Filled.Insights" IconColor="Color.Primary">
+                Insights
+            </MudNavLink>
+        </MudNavGroup>
+
+        <!-- Management Section -->
+        <MudNavGroup Title="Management" Icon="@Icons.Material.Filled.Settings" Expanded="false">
+            <MudNavLink Href="/tags" Icon="@Icons.Material.Filled.Tag" IconColor="Color.Secondary">
+                Tags Management
+            </MudNavLink>
+            <MudNavLink Href="/export" Icon="@Icons.Material.Filled.Download" IconColor="Color.Info">
+                Export Journals
+            </MudNavLink>
+        </MudNavGroup>
+
+        <!-- Settings -->
+        <MudNavLink Href="/settings" Icon="@Icons.Material.Filled.Settings" IconColor="Color.Default">
+            Settings
+        </MudNavLink>
+    </MudNavMenu>
+
+    <!-- User Section -->
+    <div class="nav-footer">
+        <MudDivider />
+        <div class="user-info">
+            <MudAvatar Size="Size.Small" Color="Color.Primary">
+                <MudIcon Icon="@Icons.Material.Filled.Person" Size="Size.Small" />
+            </MudAvatar>
+            <span class="user-name">@authService.CurrentUser?.Username</span>
+        </div>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<style>
+    .nav-sidebar {
+        width: 280px;
+        height: 100vh;
+        background-color: var(--mud-palette-surface);
+        border-right: 1px solid var(--mud-palette-divider);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        overflow-y: auto;
+    }
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="calendar" Match="NavLinkMatch.All">
-                <span class="bi bi-calendar-fill-nav-menu" aria-hidden="true"></span> Journal Calendar
-            </NavLink>
-         
-        </div>
+    .nav-header {
+        padding: 24px 20px 16px;
+        border-bottom: 1px solid var(--mud-palette-divider);
+    }
 
-      
-    </nav>
-</div>
+    .app-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .app-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--mud-palette-primary);
+        margin: 0;
+    }
+
+    .nav-menu {
+        flex: 1;
+        padding: 16px 0;
+    }
+
+    .nav-menu .mud-nav-link {
+        margin: 4px 8px;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .nav-menu .mud-nav-link:hover {
+        background-color: var(--mud-palette-action-hover);
+    }
+
+    .nav-menu .mud-nav-link.mud-nav-link-active {
+        background-color: var(--mud-palette-primary);
+        color: var(--mud-palette-primary-contrast-text);
+    }
+
+    .nav-menu .mud-nav-link.mud-nav-link-active .mud-icon {
+        color: var(--mud-palette-primary-contrast-text) !important;
+    }
+
+    .nav-menu .mud-nav-group {
+        margin: 8px 0;
+    }
+
+    .nav-menu .mud-nav-group .mud-nav-group-header {
+        padding: 12px 16px 12px 20px;
+        font-weight: 600;
+        color: var(--mud-palette-text-secondary);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-menu .mud-nav-group .mud-nav-link {
+        padding-left: 32px;
+    }
+
+    .nav-footer {
+        padding: 16px 20px;
+        border-top: 1px solid var(--mud-palette-divider);
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .user-name {
+        font-weight: 500;
+        color: var(--mud-palette-text-primary);
+    }
+
+    /* Dark theme adjustments */
+    [data-mud-theme="dark"] .nav-sidebar {
+        background-color: var(--mud-palette-background-grey);
+    }
+</style>

@@ -1,0 +1,30 @@
+@page "/mood-analytics"
+@inject JournalService journalService
+@inject AuthenticationService authService
+@using Inkwell_Kunal.Services
+
+<PageTitle>Mood Analytics - Inkwell Journal</PageTitle>
+
+<h3 class="text-center my-5">😊 Mood Analytics</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted">Detailed mood analytics and insights.</p>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/dashboard')">
+                            Back to Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Inject] NavigationManager Navigation { get; set; } = default!;
+}

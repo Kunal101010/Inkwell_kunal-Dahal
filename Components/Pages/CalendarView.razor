@@ -1,0 +1,30 @@
+@page "/calendar-view"
+@inject JournalService journalService
+@inject AuthenticationService authService
+@using Inkwell_Kunal.Services
+
+<PageTitle>Calendar View - Inkwell Journal</PageTitle>
+
+<h3 class="text-center my-5">📅 Calendar View</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted">Calendar view for browsing journal entries by date.</p>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/calendar')">
+                            Go to Write Journal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Inject] NavigationManager Navigation { get; set; } = default!;
+}

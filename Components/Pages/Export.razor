@@ -1,0 +1,121 @@
+@page "/export"
+@inject JournalService journalService
+@inject AuthenticationService authService
+@inject PdfExportService pdfExportService
+@inject IJSRuntime JSRuntime
+@using Inkwell_Kunal.Services
+@using Microsoft.JSInterop
+
+<PageTitle>Export Journals - Inkwell Journal</PageTitle>
+
+<h3 class="text-center my-5">📤 Export Journals</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted">Export your journal entries to PDF format.</p>
+
+                    <!-- Date Range Selection -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" @bind="exportFromDate" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">End Date</label>
+                            <input type="date" class="form-control" @bind="exportToDate" />
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-success btn-lg" @onclick="ExportToPdf" disabled="@isExporting">
+                            @if (isExporting)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                Exporting
+                            }
+                            else
+                            {
+                                <span>📄 Export to PDF</span>
+                            }
+                        </button>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-info mt-3">@message</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Inject] NavigationManager Navigation { get; set; } = default!;
+
+    private DateTime? exportFromDate;
+    private DateTime? exportToDate;
+    private bool isExporting = false;
+    private string? message;
+
+    protected override void OnInitialized()
+    {
+        // Default to last 30 days
+        exportToDate = DateTime.Today;
+        exportFromDate = DateTime.Today.AddDays(-30);
+    }
+
+    private async Task ExportToPdf()
+    {
+        if (!exportFromDate.HasValue || !exportToDate.HasValue)
+        {
+            message = "Please select both start and end dates.";
+            return;
+        }
+
+        if (exportFromDate > exportToDate)
+        {
+            message = "Start date cannot be after end date.";
+            return;
+        }
+
+        isExporting = true;
+        message = "Preparing export...";
+
+        try
+        {
+            var entries = await journalService.GetAllEntriesAsync();
+            var entriesToExport = entries
+                .Where(e => e.Date >= exportFromDate.Value.Date && e.Date <= exportToDate.Value.Date)
+                .OrderBy(e => e.Date)
+                .ToList();
+
+            if (!entriesToExport.Any())
+            {
+                message = "No entries found in the selected date range.";
+                return;
+            }
+
+            var userName = authService.CurrentUser?.Username ?? "User";
+            var pdfBytes = pdfExportService.GenerateJournalPdf(entriesToExport, userName);
+
+            // Save file using JS
+            await JSRuntime.InvokeVoidAsync("downloadFile",
+                $"journal_export_{exportFromDate:yyyy-MM-dd}_to_{exportToDate:yyyy-MM-dd}.pdf",
+                Convert.ToBase64String(pdfBytes));
+
+            message = $"Successfully exported {entriesToExport.Count} entries!";
+        }
+        catch (Exception ex)
+        {
+            message = $"Export failed: {ex.Message}";
+        }
+        finally
+        {
+            isExporting = false;
+        }
+    }
+}

@@ -98,3 +98,79 @@ h1:focus {
     min-height: 100vh;
 }
 
+/* Journal Editor Styles */
+.monospace-font {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.preview-box {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.dark .preview-box {
+    color: #ddd;
+}
+
+.toolbar .btn {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Calendar Styles */
+.calendar {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.day:hover {
+    background-color: #e9ecef;
+}
+
+.day.has-entry {
+    background-color: #d1ecf1;
+    font-weight: bold;
+}
+
+.day.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.day.today {
+    border: 2px solid #28a745;
+}
+
+.day.empty {
+    background-color: #f8f9fa;
+    cursor: default;
+}
+

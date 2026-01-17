@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
-
+using Inkwell_Kunal.Data;
+using Inkwell_Kunal.Services;
+using Microsoft.EntityFrameworkCore;
+using MudBlazor.Services;
 namespace Inkwell_Kunal;
 
 public static class MauiProgram
@@ -17,6 +20,12 @@ public static class MauiProgram
 		builder.Services.AddMauiBlazorWebView();
 		builder.Services.AddSingleton<Inkwell_Kunal.Services.ThemeService>();
 		builder.Services.AddScoped<Inkwell_Kunal.Services.JournalService>();
+		builder.Services.AddDbContext<AppDbContext>();                    // Database
+		builder.Services.AddScoped<JournalService>();                    // Your service
+		builder.Services.AddSingleton<ThemeService>();
+		builder.Services.AddScoped<AuthenticationService>();
+		builder.Services.AddScoped<PdfExportService>();
+		builder.Services.AddMudServices();
 
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
@@ -24,5 +33,7 @@ public static class MauiProgram
 #endif
 
 		return builder.Build();
+		
 	}
+	
 }

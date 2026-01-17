@@ -1,0 +1,8 @@
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\wwwroot\css\bootstrap\bootstrap.min.css.map
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\wwwroot\css\app.css
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\wwwroot\css\bootstrap\bootstrap.min.css
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\wwwroot\index.html
+wwwroot\css\app.css
+wwwroot\css\bootstrap\bootstrap.min.css
+wwwroot\css\bootstrap\bootstrap.min.css.map
+wwwroot\index.html

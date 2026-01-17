@@ -1,91 +1,478 @@
-@using Inkwell_Kunal.Services
-@page "/"
 @page "/calendar"
-
 @inject JournalService JournalService
+@inject IJSRuntime JSRuntime
+@using Inkwell_Kunal.Data
+@using Inkwell_Kunal.Services
+@using Markdig
 
-<h3>📅 Journal Calendar</h3>
+<PageTitle>Inkwell Journal</PageTitle>
 
-<div class="mb-3">
-    <label>Select a date:</label>
-    <input type="date" class="form-control w-auto d-inline-block" @bind="SelectedDate" />
-</div>
+<h3 class="text-center my-5">Inkwell Journal</h3>
 
-@if (currentEntry != null)
-{
-    <div class="card mt-3">
-        <div class="card-header">
-            Journal Entry for <strong>@SelectedDate.ToLongDateString()</strong>
+<div class="container">
+    <!-- Calendar Navigation -->
+    <div class="calendar mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <button class="btn btn-outline-primary" @onclick="PrevMonth">&lt;</button>
+            <h4>@currentMonth.ToString("MMMM yyyy")</h4>
+            <div class="ms-3 text-end">
+                <div class="small text-muted">🔥 Streak</div>
+                <div class="fw-bold">@calendarCurrentStreak<span class="text-muted">d</span> • longest @calendarLongestStreak</div>
+            </div>
+            <button class="btn btn-outline-primary" @onclick="NextMonth">&gt;</button>
         </div>
-        <div class="card-body">
-            <textarea class="form-control" rows="8" @bind="currentEntry.Content" @bind:event="oninput"></textarea>
-            <button class="btn btn-success mt-2" @onclick="SaveEntry">
-                💾 Save Entry
-            </button>
-            @if (saveMessage != null)
+        <div class="calendar-grid">
+            <div class="day-header">Sun</div>
+            <div class="day-header">Mon</div>
+            <div class="day-header">Tue</div>
+            <div class="day-header">Wed</div>
+            <div class="day-header">Thu</div>
+            <div class="day-header">Fri</div>
+            <div class="day-header">Sat</div>
+            @foreach (var day in GetCalendarDays())
             {
-                <div class="alert alert-success mt-2">@saveMessage</div>
+                if (day.HasValue)
+                {
+                    var hasEntry = entryDates.Contains(day.Value.Date);
+                    var isSelected = day.Value.Date == SelectedDate.Date;
+                    var isToday = day.Value.Date == DateTime.Today;
+                    <div class="day @(hasEntry ? "has-entry" : "") @(isSelected ? "selected" : "") @(isToday ? "today" : "")" @onclick="() => SelectDate(day.Value)">
+                        @day.Value.Day
+                    </div>
+                }
+                else
+                {
+                    <div class="day empty"></div>
+                }
             }
         </div>
     </div>
-}
-else if (SelectedDate <= DateTime.Today)
-{
-    <div class="mt-4">
-        <p>📝 No journal entry yet for <strong>@SelectedDate.ToLongDateString()</strong>.</p>
-        <button class="btn btn-primary" @onclick="CreateNewEntry">
-            ➕ Create New Entry
-        </button>
+
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <label class="form-label fw-bold">Or select date directly:</label>
+            <input type="date" class="form-control" @bind="SelectedDate" @bind:after="LoadEntry" />
+        </div>
     </div>
-}
-else
-{
-    <p class="text-muted">You can't write journal entries for future dates yet! 😊</p>
-}
+
+    @if (currentEntry != null)
+    {
+        <!-- Existing Entry -->
+        <div class="card border-primary shadow-sm">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-0">@SelectedDate.ToLongDateString()</h5>
+                    @if (!string.IsNullOrEmpty(currentEntry?.PrimaryMood))
+                    {
+                        <div class="mt-1">
+                            <span class="badge bg-light text-primary me-1">@currentEntry!.PrimaryMood</span>
+                            @if (!string.IsNullOrEmpty(currentEntry.SecondaryMood1))
+                            {
+                                <span class="badge bg-light text-secondary me-1">@currentEntry.SecondaryMood1</span>
+                            }
+                            @if (!string.IsNullOrEmpty(currentEntry.SecondaryMood2))
+                            {
+                                <span class="badge bg-light text-secondary">@currentEntry.SecondaryMood2</span>
+                            }
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(currentEntry?.Tags))
+                    {
+                        <div class="mt-1">
+                            @foreach (var tag in currentEntry!.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                            {
+                                <span class="badge bg-info text-dark me-1">@tag</span>
+                            }
+                        </div>
+                    }
+                </div>
+                <button class="btn btn-danger btn-sm" @onclick="DeleteEntry">
+                    Delete Entry
+                </button>
+            </div>
+            <div class="card-body">
+                <!-- Title Input -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Entry Title (Optional)</label>
+                    <input type="text" class="form-control" @bind="currentEntry.Title" placeholder="Give your entry a title..." />
+                </div>
+
+                <!-- Mood Selection -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Primary Mood <span class="text-danger">*</span></label>
+                        <select class="form-select" @bind="selectedPrimaryMood" required>
+                            <option value="">Select Primary Mood</option>
+                            @foreach (var mood in JournalService.AvailableMoods)
+                            {
+                                <option value="@mood">@mood</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Secondary Mood 1 (Optional)</label>
+                        <select class="form-select" @bind="selectedSecondaryMood1">
+                            <option value="">None</option>
+                            @foreach (var mood in JournalService.AvailableMoods)
+                            {
+                                <option value="@mood">@mood</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Secondary Mood 2 (Optional)</label>
+                        <select class="form-select" @bind="selectedSecondaryMood2">
+                            <option value="">None</option>
+                            @foreach (var mood in JournalService.AvailableMoods)
+                            {
+                                <option value="@mood">@mood</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label fw-bold">Tags (comma-separated)</label>
+                        <input type="text" class="form-control" @bind="tags" placeholder="e.g., Work, Family, Reflection" />
+                        <div class="mt-2">
+                            <small class="text-muted">Suggested tags:</small>
+                            @foreach (var tag in JournalService.SuggestedTags)
+                            {
+                                <button class="btn btn-outline-secondary btn-sm me-1 mb-1" @onclick="() => AddTag(tag)">@tag</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="toolbar mb-3 d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertBold" title="Bold"><strong>B</strong></button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertItalic" title="Italic"><em>I</em></button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertH1" title="Heading 1">H1</button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertH2" title="Heading 2">H2</button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertH3" title="Heading 3">H3</button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertBulletList" title="Bullet List">• List</button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertNumberedList" title="Numbered List">1. List</button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertLink" title="Link">🔗</button>
+                </div>
+
+                <textarea id="journal-editor" @bind="currentMarkdown" @oninput="UpdatePreview"
+                          class="form-control monospace-font" 
+                          rows="15" 
+                          placeholder="Write your journal entry here using Markdown..."></textarea>
+
+                <div class="mt-4 preview-box p-4 border rounded bg-light">
+                    @if (string.IsNullOrWhiteSpace(currentMarkdown))
+                    {
+                        <p class="text-muted">Start typing to see live preview...</p>
+                    }
+                    else
+                    {
+                        @((MarkupString)renderedHtml)
+                    }
+                </div>
+
+                <div class="mt-4 text-muted small">
+                    <strong>Created:</strong> @currentEntry.CreatedAt.ToString("f")
+                    @if (currentEntry.UpdatedAt.HasValue)
+                    {
+                        <br /><strong>Last Updated:</strong> @currentEntry.UpdatedAt.Value.ToString("f")
+                    }
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-success btn-lg" @onclick="SaveEntry">
+                        Save Entry
+                    </button>
+                    @if (saveMessage != null)
+                    {
+                        <span class="ms-3 text-success fw-bold fs-5">@saveMessage</span>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else if (SelectedDate <= DateTime.Today)
+    {
+        <!-- No Entry Yet -->
+        <div class="alert alert-info text-center p-5">
+            <h4>No entry yet for <strong>@SelectedDate.ToLongDateString()</strong></h4>
+            <p>Start writing your thoughts today!</p>
+            <button class="btn btn-primary btn-lg" @onclick="CreateNewEntry">
+                Create New Entry
+            </button>
+        </div>
+    }
+    else
+    {
+        <!-- Future Date -->
+        <div class="alert alert-warning text-center p-5">
+            <h4>Future entries are not allowed</h4>
+            <p>Come back on that day to write your thoughts!</p>
+        </div>
+    }
+</div>
 
 @code {
+    [SupplyParameterFromQuery]
+    public DateTime? Date { get; set; }
+
     private DateTime SelectedDate = DateTime.Today;
     private JournalEntry? currentEntry;
+    private string currentMarkdown = string.Empty;
+    private string renderedHtml = string.Empty;
     private string? saveMessage;
+
+    private string? selectedPrimaryMood;
+    private string? selectedSecondaryMood1;
+    private string? selectedSecondaryMood2;
+    private string tags = "";
+    private DateTime currentMonth = DateTime.Today;
+    private List<DateTime> entryDates = new();
+
+    private readonly MarkdownPipeline pipeline = new MarkdownPipelineBuilder()
+        .UseAdvancedExtensions()
+        .Build();
+
+    private int calendarCurrentStreak = 0;
+    private int calendarLongestStreak = 0;
+    private List<DateTime> calendarMissedDates = new();
+    private int calendarStreakLookbackDays = 30;
 
     protected override async Task OnInitializedAsync()
     {
-        JournalService.OnChange += StateHasChanged;
-        await LoadEntryForSelectedDate();
+        JournalService.OnChange += OnJournalChanged;
+        await LoadEntryDates();
+        await LoadStreakInfo();
+        await LoadEntry();
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        await LoadEntryForSelectedDate();
+        if (Date.HasValue)
+        {
+            SelectedDate = Date.Value.Date;
+        }
+        await base.OnParametersSetAsync();
     }
 
-    private async Task LoadEntryForSelectedDate()
+    private async Task LoadEntry()
     {
         currentEntry = await JournalService.GetEntryAsync(SelectedDate);
+        currentMarkdown = currentEntry?.Content ?? string.Empty;
+        selectedPrimaryMood = currentEntry?.PrimaryMood;
+        selectedSecondaryMood1 = currentEntry?.SecondaryMood1;
+        selectedSecondaryMood2 = currentEntry?.SecondaryMood2;
+        tags = currentEntry?.Tags ?? "";
+        UpdatePreview();
         saveMessage = null;
+        StateHasChanged();
     }
 
-    private async Task CreateNewEntry()
+    private void UpdatePreview()
     {
-        currentEntry = new JournalEntry { Date = SelectedDate, Content = "" };
+        renderedHtml = string.IsNullOrWhiteSpace(currentMarkdown)
+            ? string.Empty
+            : Markdown.ToHtml(currentMarkdown, pipeline);
+        StateHasChanged();
+    }
+
+    private void CreateNewEntry()
+    {
+        currentEntry = new JournalEntry
+        {
+            Date = SelectedDate.Date,
+            Content = string.Empty,
+            CreatedAt = DateTime.Now
+        };
+        currentMarkdown = string.Empty;
+        selectedPrimaryMood = null;
+        selectedSecondaryMood1 = null;
+        selectedSecondaryMood2 = null;
+        tags = "";
+        UpdatePreview();
         StateHasChanged();
     }
 
     private async Task SaveEntry()
     {
-        if (currentEntry != null)
+        if (currentEntry != null && !string.IsNullOrWhiteSpace(currentMarkdown.Trim()) && !string.IsNullOrWhiteSpace(selectedPrimaryMood))
         {
-            await JournalService.SaveEntryAsync(SelectedDate, currentEntry.Content);
+            await JournalService.SaveEntryAsync(SelectedDate, currentMarkdown.Trim(), currentEntry.Title, selectedPrimaryMood, selectedSecondaryMood1, selectedSecondaryMood2, tags.Trim());
+
+            if (currentEntry.CreatedAt == default)
+                currentEntry.CreatedAt = DateTime.Now;
+            currentEntry.UpdatedAt = DateTime.Now;
+
             saveMessage = "Entry saved successfully! ✅";
-            // Optional: auto-clear message after 3 seconds
-            await Task.Delay(3000);
-            saveMessage = null;
+            UpdatePreview();
+            await LoadEntryDates();
             StateHasChanged();
+        }
+        else if (string.IsNullOrWhiteSpace(selectedPrimaryMood))
+        {
+            saveMessage = "Please select a primary mood.";
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteEntry()
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm",
+            "Are you sure you want to permanently delete this entire entry?");
+
+        if (confirmed)
+        {
+            await JournalService.DeleteEntryAsync(SelectedDate);
+            currentEntry = null;
+            currentMarkdown = string.Empty;
+            renderedHtml = string.Empty;
+            saveMessage = "Entry deleted.";
+            await LoadEntryDates();
+            StateHasChanged();
+        }
+    }
+
+    private void OnJournalChanged()
+    {
+        InvokeAsync(async () =>
+        {
+            await LoadEntry();
+            await LoadStreakInfo();
+        });
+    }
+
+    private async Task LoadStreakInfo()
+    {
+        try
+        {
+            var info = await JournalService.GetStreakInfoAsync(calendarStreakLookbackDays);
+            calendarCurrentStreak = info.CurrentStreak;
+            calendarLongestStreak = info.LongestStreak;
+            calendarMissedDates = info.MissedDates;
+            StateHasChanged();
+        }
+        catch
+        {
+            // ignore errors here
+        }
+    }
+
+    private async Task InsertBold() => await JSRuntime.InvokeVoidAsync("editorUtils.insertMarkdown", "journal-editor", "**", "**");
+    private async Task InsertItalic() => await JSRuntime.InvokeVoidAsync("editorUtils.insertMarkdown", "journal-editor", "*", "*");
+    private async Task InsertH1() => await JSRuntime.InvokeVoidAsync("editorUtils.insertHeading", "journal-editor", 1);
+    private async Task InsertH2() => await JSRuntime.InvokeVoidAsync("editorUtils.insertHeading", "journal-editor", 2);
+    private async Task InsertH3() => await JSRuntime.InvokeVoidAsync("editorUtils.insertHeading", "journal-editor", 3);
+    private async Task InsertBulletList() => await JSRuntime.InvokeVoidAsync("editorUtils.insertList", "journal-editor", "bullet");
+    private async Task InsertNumberedList() => await JSRuntime.InvokeVoidAsync("editorUtils.insertList", "journal-editor", "numbered");
+    private async Task LoadEntryDates()
+    {
+        entryDates = await JournalService.GetEntryDatesAsync();
+    }
+
+    private void PrevMonth()
+    {
+        currentMonth = currentMonth.AddMonths(-1);
+        StateHasChanged();
+    }
+
+    private void NextMonth()
+    {
+        currentMonth = currentMonth.AddMonths(1);
+        StateHasChanged();
+    }
+
+    private async Task SelectDate(DateTime date)
+    {
+        SelectedDate = date;
+        await LoadEntry();
+    }
+
+    private List<DateTime?> GetCalendarDays()
+    {
+        var days = new List<DateTime?>();
+        var firstDay = new DateTime(currentMonth.Year, currentMonth.Month, 1);
+        var startDate = firstDay.AddDays(-(int)firstDay.DayOfWeek);
+        for (int i = 0; i < 42; i++)
+        {
+            var date = startDate.AddDays(i);
+            if (date.Month == currentMonth.Month)
+                days.Add(date);
+            else
+                days.Add(null);
+        }
+        return days;
+    }
+
+    private async Task InsertLink() => await JSRuntime.InvokeVoidAsync("editorUtils.insertLink", "journal-editor");
+
+    private void AddTag(string tag)
+    {
+        var currentTags = tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
+        if (!currentTags.Contains(tag, StringComparer.OrdinalIgnoreCase))
+        {
+            currentTags.Add(tag);
+            tags = string.Join(", ", currentTags);
         }
     }
 
     public void Dispose()
     {
-        JournalService.OnChange -= StateHasChanged;
+        JournalService.OnChange -= OnJournalChanged;
     }
 }
+
+<style>
+    .monospace-font {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .preview-box h1, .preview-box h2, .preview-box h3,
+    .preview-box h4, .preview-box h5, .preview-box h6 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: #1a1a1a;
+    }
+
+    .preview-box ul, .preview-box ol {
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+
+    .preview-box blockquote {
+        border-left: 4px solid #007bff;
+        padding-left: 1em;
+        background: rgba(0,123,255,0.1);
+        border-radius: 4px;
+        padding: 1em;
+        color: #495057;
+        margin: 1em 0;
+    }
+
+    .preview-box code {
+        background: #e9ecef;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .preview-box pre {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 1em;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+
+    .preview-box a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .preview-box a:hover {
+        text-decoration: underline;
+    }
+</style>

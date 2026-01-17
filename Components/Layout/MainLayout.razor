@@ -1,6 +1,8 @@
 ﻿@using Inkwell_Kunal.Services
 @inherits LayoutComponentBase
 @inject ThemeService ThemeService
+@inject AuthenticationService AuthService
+@inject NavigationManager NavManager
 
 <div class="page @(ThemeService.IsDarkMode ? "dark" : "light")">
     <div class="sidebar">
@@ -9,15 +11,35 @@
 
     <main>
         <!-- This is the top row where the theme toggle goes -->
-        <div class="top-row px-4">
-            <!-- Your theme toggle button -->
-            <button @onclick="ThemeService.ToggleTheme" class="btn btn-link ms-auto">
-                @(ThemeService.IsDarkMode ? "☀️ Light" : "🌙 Dark")
-            </button>
+        <div class="top-row px-4 d-flex justify-content-between align-items-center">
+            <div>
+                @if (AuthService.IsAuthenticated)
+                {
+                    <span class="text-muted">Logged in as: @AuthService.CurrentUser?.Username</span>
+                }
+            </div>
+            <div>
+                <button @onclick="ThemeService.ToggleTheme" class="btn btn-link me-2">
+                    @(ThemeService.IsDarkMode ? "☀️ Light" : "🌙 Dark")
+                </button>
+                @if (AuthService.IsAuthenticated)
+                {
+                    <button @onclick="Logout" class="btn btn-outline-danger btn-sm">Logout</button>
+                }
+            </div>
         </div>
 
         <article class="content px-4">
-            @Body
+            @if (!AuthService.IsAuthenticated && NavManager.Uri != NavManager.BaseUri)
+            {
+                <div class="alert alert-warning text-center">
+                    Please <a href="/">login</a> to access your journal.
+                </div>
+            }
+            else
+            {
+                @Body
+            }
         </article>
     </main>
 </div>
@@ -26,10 +48,18 @@
     protected override void OnInitialized()
     {
         ThemeService.OnThemeChanged += StateHasChanged;
+        AuthService.OnChange += StateHasChanged;
+    }
+
+    private void Logout()
+    {
+        AuthService.Logout();
+        NavManager.NavigateTo("/");
     }
 
     public void Dispose()
     {
         ThemeService.OnThemeChanged -= StateHasChanged;
+        AuthService.OnChange -= StateHasChanged;
     }
 }

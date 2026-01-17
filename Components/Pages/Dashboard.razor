@@ -1,0 +1,499 @@
+@page "/dashboard"
+@inject JournalService journalService
+@inject PdfExportService PdfExportService
+@inject IJSRuntime JSRuntime
+@using Microsoft.JSInterop
+@using Inkwell_Kunal.Data
+@using Inkwell_Kunal.Services
+
+@using MudBlazor
+
+<PageTitle>Dashboard - Inkwell Journal</PageTitle>
+
+<h3 class="text-center my-5">📊 Inkwell Dashboard</h3>
+
+<div class="container">
+    <!-- Stats Cards -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">@totalEntries</h4>
+                    <p class="card-text">Total Entries</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-success shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title text-success">@(lastEntryDate?.ToString("MMMM dd, yyyy") ?? "No entries yet")</h4>
+                    <p class="card-text">Last Entry</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-info shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title text-info">@currentStreak days</h4>
+                    <p class="card-text">Current Streak</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Streak Overview -->
+    <div class="row mb-4 text-center">
+        <div class="col-md-6 mb-3">
+            <div class="card border-secondary shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Longest Streak</h5>
+                    <h3 class="text-secondary">@longestStreak days</h3>
+                    <p class="small text-muted">Keep pushing — consistency builds habit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card border-danger shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Missed Days (last @streakLookbackDays days)</h5>
+                    <h3 class="text-danger">@missedDates.Count</h3>
+                    <p class="small text-muted">Missed days are opportunities to restart.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Analytics -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-warning shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">😊 Mood Analytics</h5>
+                </div>
+                <div class="card-body">
+                    @if (moodCounts.Any())
+                    {
+                        <div class="row">
+                            @foreach (var mood in moodCounts.Take(6))
+                            {
+                                <div class="col-md-2 mb-3">
+                                    <div class="text-center">
+                                        <h6>@mood.Key</h6>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-primary" role="progressbar" 
+                                                 style="width: @(Math.Max(10, mood.Value * 100 / moodCounts.Values.Max()))%">@mood.Value</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No mood data available yet. Start journaling to see your mood patterns!</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tag Analytics -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-success shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🏷️ Tag Analytics</h5>
+                </div>
+                <div class="card-body">
+                    @if (tagCounts.Any())
+                    {
+                        <div class="row">
+                            @foreach (var tag in tagCounts.Take(6))
+                            {
+                                <div class="col-md-2 mb-3">
+                                    <div class="text-center">
+                                        <h6>@tag.Key</h6>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-success" role="progressbar" 
+                                                 style="width: @(Math.Max(10, tag.Value * 100 / tagCounts.Values.Max()))%">@tag.Value</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No tags available yet. Start tagging your entries!</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export to PDF -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-info shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📄 Export Journal to PDF</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-3">
+                            <label for="exportFrom" class="form-label">From Date</label>
+                            <input type="date" class="form-control" id="exportFrom" 
+                                   @bind="exportFromDate" @bind:format="yyyy-MM-dd" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="exportTo" class="form-label">To Date</label>
+                            <input type="date" class="form-control" id="exportTo" 
+                                   @bind="exportToDate" @bind:format="yyyy-MM-dd" />
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-info w-100" @onclick="ExportToPdf">
+                                📄 Export PDF
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted">
+                                Export selected date range as a formatted PDF for offline viewing or sharing.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Word Count Trends -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-warning shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">📈 Word Count Trends (Last 12 Months)</h5>
+                </div>
+                <div class="card-body">
+                    @if (wordCountTrends.Any())
+                    {
+                        <div class="row">
+                            @foreach (var trend in wordCountTrends.OrderByDescending(kv => kv.Key))
+                            {
+                                <div class="col-md-3 mb-3">
+                                    <div class="text-center">
+                                        <h6>@trend.Key.ToString("MMM yyyy")</h6>
+                                        <h4 class="text-warning">@trend.Value</h4>
+                                        <small class="text-muted">words</small>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No word count data available yet.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text">🔍</span>
+                <input type="text" class="form-control" placeholder="Search by date or content..." 
+                       @bind="searchQuery" @oninput="ApplyFilters" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text">🏷️</span>
+                <input type="text" class="form-control" placeholder="Filter by tag..." 
+                       @bind="tagFilter" @oninput="ApplyFilters" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Entries Table -->
+    <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Preview</th>
+                    <th>Created</th>
+                    <th>Updated</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!filteredEntries.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-muted">
+                            No entries found. Start writing in your journal!
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var entry in pagedEntries)
+                    {
+                        <tr>
+                            <td><strong>@entry.Date.ToString("dddd, MMMM dd, yyyy")</strong></td>
+                            <td class="preview-column">@((MarkupString)GetPreview(entry.Content))</td>
+                            <td>@entry.CreatedAt.ToString("f")</td>
+                            <td>@(entry.UpdatedAt?.ToString("f") ?? "-")</td>
+                            <td class="text-center">
+                                <a href="/calendar?date=@entry.Date:yyyy-MM-dd" class="btn btn-sm btn-outline-primary me-2">
+                                    ✏️ Edit
+                                </a>
+                                <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteEntry(entry.Date)">
+                                    🗑️ Delete
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        @if (totalPages > 1)
+        {
+            <nav aria-label="Journal entries pagination" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" @onclick="() => GoToPage(currentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i == currentPage ? "active" : "")">
+                            <a class="page-link" @onclick="() => GoToPage(i)">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                        <a class="page-link" @onclick="() => GoToPage(currentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        }
+
+        @if (filteredEntries.Any())
+        {
+            <p class="text-muted text-center mt-3">
+                Showing @(((currentPage - 1) * pageSize) + 1) to @Math.Min(currentPage * pageSize, filteredEntries.Count) of @filteredEntries.Count entries
+            </p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<JournalEntry> allEntries = new();
+    private List<JournalEntry> filteredEntries = new();
+    private List<JournalEntry> pagedEntries = new();
+    private string searchQuery = "";
+    private string tagFilter = "";
+    private DateTime? dateFrom;
+    private DateTime? dateTo;
+    private string moodFilter = "";
+    private int totalEntries = 0;
+    private DateTime? lastEntryDate;
+    private int currentStreak = 0;
+    private Dictionary<string, int> moodCounts = new();
+    private Dictionary<string, int> tagCounts = new();
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalPages = 1;
+    private int longestStreak = 0;
+    private List<DateTime> missedDates = new();
+    private int streakLookbackDays = 30;
+    private Dictionary<DateTime, int> wordCountTrends = new();
+    private DateTime? exportFromDate;
+    private DateTime? exportToDate;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Subscribe to data changes
+        journalService.OnChange += OnJournalChanged;
+
+        await LoadAllEntries();
+        await LoadMoodCounts();
+        await LoadTagCounts();
+        await LoadStreakInfo();
+        await LoadWordCountTrends();
+    }
+
+    private async void OnJournalChanged()
+    {
+        await InvokeAsync(async () =>
+        {
+            await LoadAllEntries();
+            await LoadMoodCounts();
+            await LoadTagCounts();
+            await LoadStreakInfo();
+            await LoadWordCountTrends();
+            StateHasChanged();
+        });
+    }
+
+    private async Task LoadWordCountTrends()
+    {
+        wordCountTrends = await journalService.GetWordCountTrendsAsync();
+    }
+
+    private async Task LoadStreakInfo()
+    {
+        var info = await journalService.GetStreakInfoAsync(streakLookbackDays);
+        currentStreak = info.CurrentStreak;
+        longestStreak = info.LongestStreak;
+        missedDates = info.MissedDates;
+    }
+
+    private async Task LoadAllEntries()
+    {
+        allEntries = await journalService.GetAllEntriesAsync();
+        ApplyFilters();
+        CalculateStats();
+        StateHasChanged();
+    }
+
+    private async Task LoadMoodCounts()
+    {
+        moodCounts = await journalService.GetMoodCountsAsync();
+    }
+
+    private async Task LoadTagCounts()
+    {
+        tagCounts = await journalService.GetTagCountsAsync();
+    }
+
+    private void CalculateStats()
+    {
+        totalEntries = allEntries.Count;
+        lastEntryDate = allEntries.MaxBy(e => e.Date)?.Date;
+
+        // Current streak: consecutive days from today backwards
+        currentStreak = 0;
+        var checkDate = DateTime.Today;
+        while (allEntries.Any(e => e.Date.Date == checkDate))
+        {
+            currentStreak++;
+            checkDate = checkDate.AddDays(-1);
+        }
+    }
+
+    private void ApplyFilters()
+    {
+        currentPage = 1; // Reset to first page when filters change
+        filteredEntries = allEntries.Where(e =>
+            (string.IsNullOrEmpty(searchQuery) || e.Content.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)) &&
+            (string.IsNullOrEmpty(tagFilter) || (e.Tags != null && e.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Any(t => t.Contains(tagFilter, StringComparison.OrdinalIgnoreCase)))) &&
+            (!dateFrom.HasValue || e.Date >= dateFrom.Value.Date) &&
+            (!dateTo.HasValue || e.Date <= dateTo.Value.Date) &&
+            (string.IsNullOrEmpty(moodFilter) || e.PrimaryMood == moodFilter || e.SecondaryMood1 == moodFilter || e.SecondaryMood2 == moodFilter)
+        ).OrderByDescending(e => e.Date).ToList();
+
+        totalPages = (int)Math.Ceiling(filteredEntries.Count / (double)pageSize);
+        pagedEntries = filteredEntries.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+    }
+
+    private void GoToPage(int page)
+    {
+        if (page >= 1 && page <= totalPages)
+        {
+            currentPage = page;
+            ApplyFilters();
+        }
+    }
+
+    private string GetPreview(string? content)
+    {
+        if (string.IsNullOrWhiteSpace(content))
+            return "<em class=\"text-muted\">No content</em>";
+
+        // Simple text extraction: remove markdown syntax roughly
+        var plain = content.Replace("*", "").Replace("_", "").Replace("#", "").Replace("`", "").Replace("[", "").Replace("]", "").Replace("(", "").Replace(")", "");
+        var shortText = plain.Length > 150 ? plain.Substring(0, 150) + "..." : plain;
+
+        return $"<div class=\"text-muted small\">{System.Net.WebUtility.HtmlEncode(shortText)}</div>";
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Real-time search as user types
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            filteredEntries = allEntries.OrderByDescending(e => e.Date).ToList();
+        }
+        else
+        {
+            var lower = searchQuery.ToLowerInvariant();
+            filteredEntries = allEntries
+                .Where(e =>
+                    e.Date.ToString("yyyy-MM-dd").Contains(lower) ||
+                    (e.Content ?? "").ToLowerInvariant().Contains(lower))
+                .OrderByDescending(e => e.Date)
+                .ToList();
+        }
+    }
+
+    private async Task DeleteEntry(DateTime date)
+    {
+        var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this entry?");
+        if (confirmed)
+        {
+            await journalService.DeleteEntryAsync(date);
+            await LoadAllEntries();
+        }
+    }
+
+    private async Task ExportToPdf()
+    {
+        if (!exportFromDate.HasValue || !exportToDate.HasValue)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Please select both start and end dates for export.");
+            return;
+        }
+
+        if (exportFromDate > exportToDate)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Start date cannot be after end date.");
+            return;
+        }
+
+        var entriesToExport = allEntries
+            .Where(e => e.Date >= exportFromDate.Value.Date && e.Date <= exportToDate.Value.Date)
+            .OrderBy(e => e.Date)
+            .ToList();
+
+        if (!entriesToExport.Any())
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "No entries found in the selected date range.");
+            return;
+        }
+
+        var userName = "User"; // Could get from auth service
+        var pdfBytes = PdfExportService.GenerateJournalPdf(entriesToExport, userName);
+
+        // Save file using JS
+        await JSRuntime.InvokeVoidAsync("downloadFile", $"journal_export_{exportFromDate:yyyy-MM-dd}_to_{exportToDate:yyyy-MM-dd}.pdf", Convert.ToBase64String(pdfBytes));
+    }
+}
+
+<style>
+    .preview-column {
+        max-width: 400px;
+        word-wrap: break-word;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.2s ease;
+    }
+</style>

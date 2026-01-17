@@ -1,0 +1,170 @@
+@page "/"
+@inject AuthenticationService AuthService
+@inject NavigationManager NavManager
+
+@using Inkwell_Kunal.Services
+
+<PageTitle>Login - Inkwell Journal</PageTitle>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>🔐 Inkwell Journal Login</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger">@errorMessage</div>
+                    }
+
+                    @if (showRegister)
+                    {
+                        <!-- Register Form -->
+                        <h5 class="text-center mb-3">Create Account</h5>
+                        <form @onsubmit="HandleRegister">
+                            <div class="mb-3">
+                                <label for="regUsername" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="regUsername" @bind="registerUsername" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="regPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="regPassword" @bind="registerPassword" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="regPin" class="form-label">PIN (Optional, 4-6 digits)</label>
+                                <input type="password" class="form-control" id="regPin" @bind="registerPin" pattern="[0-9]{4,6}" />
+                            </div>
+                            <button type="submit" class="btn btn-success w-100" disabled="@isLoading">
+                                @if (isLoading) { <span class="spinner-border spinner-border-sm me-2"></span> }
+                                Create Account
+                            </button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-link" @onclick="() => showRegister = false">Already have an account? Login</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Login Form -->
+                        <h5 class="text-center mb-3">Welcome Back</h5>
+                        <form @onsubmit="HandleLogin">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" @bind="username" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password or PIN</label>
+                                <input type="password" class="form-control" id="password" @bind="password" required />
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" disabled="@isLoading">
+                                @if (isLoading) { <span class="spinner-border spinner-border-sm me-2"></span> }
+                                Login
+                            </button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-link" @onclick="() => showRegister = true">New user? Register</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string username = "";
+    private string password = "";
+    private string registerUsername = "";
+    private string registerPassword = "";
+    private string registerPin = "";
+    private bool showRegister = false;
+    private bool isLoading = false;
+    private string errorMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthService.IsAuthenticated)
+        {
+            NavManager.NavigateTo("/dashboard");
+        }
+    }
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        errorMessage = "";
+        try
+        {
+            bool success = false;
+            // Try password first
+            if (!success)
+            {
+                success = await AuthService.LoginAsync(username, password);
+            }
+            // If password failed and password looks like PIN, try PIN
+            if (!success && password.All(char.IsDigit) && password.Length >= 4 && password.Length <= 6)
+            {
+                success = await AuthService.LoginWithPinAsync(username, password);
+            }
+
+            if (success)
+            {
+                NavManager.NavigateTo("/dashboard");
+            }
+            else
+            {
+                errorMessage = "Invalid username or password/PIN.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Login failed: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task HandleRegister()
+    {
+        isLoading = true;
+        errorMessage = "";
+        try
+        {
+            if (string.IsNullOrWhiteSpace(registerUsername) || string.IsNullOrWhiteSpace(registerPassword))
+            {
+                errorMessage = "Username and password are required.";
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(registerPin) && (!registerPin.All(char.IsDigit) || registerPin.Length < 4 || registerPin.Length > 6))
+            {
+                errorMessage = "PIN must be 4-6 digits.";
+                return;
+            }
+
+            bool success = await AuthService.RegisterAsync(registerUsername, registerPassword, string.IsNullOrWhiteSpace(registerPin) ? null : registerPin);
+            if (success)
+            {
+                // Auto-login after registration
+                await AuthService.LoginAsync(registerUsername, registerPassword);
+                NavManager.NavigateTo("/dashboard");
+            }
+            else
+            {
+                errorMessage = "Username already exists.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Registration failed: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
