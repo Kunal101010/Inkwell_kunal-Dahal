@@ -1,0 +1,196 @@
+@page "/dashboard"
+@using Inkwell_Kunal.Data
+@using Inkwell_Kunal.Data.Models
+@inject IJournalService JournalService
+
+<h3>Dashboard — Analytics & Insights</h3>
+
+@if (IsLoading)
+{
+    <p>Loading analytics…</p>
+}
+else if (Entries == null || Entries.Length == 0)
+{
+    <div class="card p-3">
+        <div>No journal entries yet. Create entries to see analytics.</div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card p-3 h-100">
+                <h5 class="mb-3">Mood Distribution</h5>
+                @foreach (var kv in MoodDistribution.OrderByDescending(k => k.Value))
+                {
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div>@kv.Key</div>
+                            <div class="text-muted">@kv.Value (@(Math.Round(kv.Value * 100.0 / TotalEntries,1))%)</div>
+                        </div>
+                        <div class="progress" style="height:12px; background:#f1f1f1;">
+                            <div class="progress-bar" role="progressbar" style="width:@(kv.Value * 100.0 / TotalEntries)% ; background:#3b82f6;" aria-valuenow="@kv.Value" aria-valuemin="0" aria-valuemax="@TotalEntries"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card p-3 h-100">
+                <h5 class="mb-3">Most Frequent Moods</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var m in FrequentMoods.Take(10))
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>@m.Key</div>
+                            <span class="badge bg-primary rounded-pill">@m.Value</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-12 mb-3">
+            <div class="card p-3">
+                <h5 class="mb-3">Top Tags</h5>
+                @if (TagCounts.Count == 0)
+                {
+                    <div class="text-muted">No tags used yet.</div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                @foreach (var t in TagCounts.Take(20))
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>@t.Key</div>
+                                        <span class="badge bg-secondary rounded-pill">@t.Value</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Tag Breakdown (Top 10)</h6>
+                            @foreach (var t in TagCounts.Take(10))
+                            {
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between"><div>@t.Key</div><div class="text-muted">@t.Value</div></div>
+                                    <div class="progress" style="height:10px; background:#f1f1f1"><div class="progress-bar" style="width:@(t.Value * 100.0 / (TagCounts.First().Value))% ; background:#10b981"></div></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-12 mb-3">
+            <div class="card p-3">
+                <h5 class="mb-3">Word Count Trends (monthly average)</h5>
+                @if (WordTrendMonths.Count == 0)
+                {
+                    <div class="text-muted">Not enough data yet.</div>
+                }
+                else
+                {
+                    <div style="overflow:auto;">
+                        <svg width="700" height="200" viewBox="0 0 700 200" preserveAspectRatio="xMidYMid meet">
+                            <polyline fill="none" stroke="#3b82f6" stroke-width="2" points="@String.Join(' ', TrendPoints)" />
+                        </svg>
+                    </div>
+                    <div class="d-flex mt-2" style="font-size:11px;">
+                        @for (int i=0;i<Labels.Count;i++)
+                        {
+                            <div style="flex:1;text-align:center">@Labels[i]</div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private JournalEntry[]? Entries;
+    private bool IsLoading = true;
+    private int TotalEntries = 0;
+    private Dictionary<string,int> MoodDistribution = new();
+    private List<KeyValuePair<string,int>> FrequentMoods = new();
+    private List<KeyValuePair<string,int>> TagCounts = new();
+
+    // trend data
+    private List<string> Labels = new();
+    private List<string> TrendPoints = new();
+    private List<int> LabelXs = new();
+    private List<int> WordTrendMonths = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+        Entries = await JournalService.GetAllEntriesAsync();
+        if (Entries != null && Entries.Length > 0)
+        {
+            TotalEntries = Entries.Length;
+
+            // Mood distribution (primary + secondary contributions)
+            var moodCounts = new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
+            foreach (var e in Entries)
+            {
+                if (!string.IsNullOrWhiteSpace(e.PrimaryMood))
+                {
+                    if (!moodCounts.ContainsKey(e.PrimaryMood)) moodCounts[e.PrimaryMood]=0;
+                    moodCounts[e.PrimaryMood]++;
+                }
+                foreach (var s in e.SecondaryMoods)
+                {
+                    if (string.IsNullOrWhiteSpace(s)) continue;
+                    if (!moodCounts.ContainsKey(s)) moodCounts[s]=0;
+                    moodCounts[s]++;
+                }
+            }
+            MoodDistribution = moodCounts;
+            FrequentMoods = moodCounts.OrderByDescending(k=>k.Value).ToList();
+
+            // Tags
+            var tagCounts = new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
+            foreach (var e in Entries)
+            {
+                foreach (var t in e.Tags)
+                {
+                    var tag = t?.Trim();
+                    if (string.IsNullOrEmpty(tag)) continue;
+                    if (!tagCounts.ContainsKey(tag)) tagCounts[tag]=0;
+                    tagCounts[tag]++;
+                }
+            }
+            TagCounts = tagCounts.OrderByDescending(k=>k.Value).ToList();
+
+            // Word count trends: monthly average for last 12 months present in data
+            var groups = Entries.GroupBy(e => new { e.CreatedAt.Year, e.CreatedAt.Month })
+                .OrderBy(g => g.Key.Year).ThenBy(g=>g.Key.Month)
+                .Select(g => new { Key = new DateTime(g.Key.Year, g.Key.Month, 1), Avg = g.Average(x => (x.Content ?? string.Empty).Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length) })
+                .ToList();
+
+            Labels.Clear(); TrendPoints.Clear(); LabelXs.Clear();
+            if (groups.Count>0)
+            {
+                double max = groups.Max(g=>g.Avg);
+                max = Math.Max(max,1);
+                int w = 600; int h = 150; int left=40; int right=40; int usable = w - left - right;
+                for (int i=0;i<groups.Count;i++)
+                {
+                    var g = groups[i];
+                    var x = left + (int)(i * (double)usable / Math.Max(1, groups.Count-1));
+                    var y = (int)(h - (g.Avg / max * (h-40)));
+                    TrendPoints.Add($"{x},{y}");
+                    Labels.Add(g.Key.ToString("MMM yy"));
+                    LabelXs.Add(x);
+                }
+            }
+        }
+        IsLoading = false;
+    }
+}
