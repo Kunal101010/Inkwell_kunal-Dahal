@@ -1,30 +1,268 @@
 @page "/entries"
 @inject JournalService journalService
 @inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
+@using Inkwell_Kunal.Data
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Journal Entries - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">📝 Journal Entries</h3>
-
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-muted">Paginated view of all journal entries.</p>
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/calendar')">
-                            Create New Entry
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="entries-page">
+    <div class="page-header">
+        <h3>Journal Entries</h3>
+        <p class="page-subtitle">View, search, and manage all your journal entries</p>
     </div>
+
+    <div class="entries-controls">
+        <input type="text" class="form-control search-input" placeholder="Search entries by title or content..." @bind="searchTerm" @bind:event="oninput" />
+        <button class="btn btn-primary" @onclick="CreateNewEntry">Create New Entry</button>
+    </div>
+
+    @if (filteredEntries.Any())
+    {
+        <div class="entries-info">
+            <span>Showing @filteredEntries.Count @(filteredEntries.Count == 1 ? "entry" : "entries")</span>
+        </div>
+
+        <div class="entries-table-wrapper">
+            <table class="table table-hover entries-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Mood</th>
+                        <th>Preview</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var entry in filteredEntries)
+                    {
+                        <tr>
+                            <td>
+                                <span class="date-badge">@entry.Date.ToShortDateString()</span>
+                            </td>
+                            <td>
+                                <span class="entry-title">@(string.IsNullOrWhiteSpace(entry.Title) ? "Untitled" : entry.Title)</span>
+                            </td>
+                            <td>
+                                <span class="mood-pill">@entry.PrimaryMood</span>
+                            </td>
+                            <td>
+                                <span class="preview-text">@(entry.Content?.Length > 50 ? entry.Content.Substring(0, 50) + "..." : entry.Content)</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-link" @onclick="() => ViewEntry(entry)">View</button>
+                                <button class="btn btn-sm btn-link" @onclick="() => EditEntry(entry)">Edit</button>
+                                <button class="btn btn-sm btn-link text-danger" @onclick="() => DeleteEntry(entry)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="empty-state">
+            <p>No entries found. Start writing your first journal entry!</p>
+            <button class="btn btn-primary" @onclick="CreateNewEntry">Create Entry</button>
+        </div>
+    }
 </div>
 
+<style>
+    .entries-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h3 {
+        color: #2d3748;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+        color: #718096;
+        margin: 0;
+    }
+
+    .entries-controls {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        font-size: 1rem;
+    }
+
+    .search-input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .entries-info {
+        color: #718096;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .entries-table-wrapper {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .entries-table {
+        margin: 0;
+    }
+
+    .entries-table thead {
+        background-color: #f7fafc;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .entries-table th {
+        color: #4a5568;
+        font-weight: 600;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    .entries-table td {
+        padding: 1rem;
+        vertical-align: middle;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .entries-table tbody tr:hover {
+        background-color: #f7fafc;
+    }
+
+    .date-badge {
+        background-color: #e6fffa;
+        color: #234e52;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .entry-title {
+        color: #2d3748;
+        font-weight: 500;
+    }
+
+    .mood-pill {
+        background-color: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .preview-text {
+        color: #718096;
+        font-size: 0.9rem;
+    }
+
+    .btn-link {
+        color: #667eea;
+        text-decoration: none;
+        padding: 0;
+        font-size: 0.9rem;
+    }
+
+    .btn-link:hover {
+        color: #5568d3;
+        text-decoration: underline;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 3rem 2rem;
+        background-color: #f7fafc;
+        border-radius: 12px;
+    }
+
+    .empty-state p {
+        color: #718096;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+</style>
+
 @code {
-    [Inject] NavigationManager Navigation { get; set; } = default!;
+    private List<JournalEntry> allEntries = new();
+    private List<JournalEntry> filteredEntries = new();
+    private string searchTerm = "";
+    private JournalEntry? selectedEntry;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allEntries = (await journalService.GetAllEntriesAsync()).OrderByDescending(e => e.Date).ToList();
+        FilterEntries();
+    }
+
+    private void FilterEntries()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredEntries = allEntries;
+        }
+        else
+        {
+            filteredEntries = allEntries.Where(e => 
+                (e.Title?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (e.Content?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false)
+            ).ToList();
+        }
+    }
+
+    private void CreateNewEntry()
+    {
+        Navigation.NavigateTo("/calendar");
+    }
+
+    private void ViewEntry(JournalEntry entry)
+    {
+        // Navigate to a view page or modal
+        Navigation.NavigateTo($"/entry/{entry.Id}");
+    }
+
+    private void EditEntry(JournalEntry entry)
+    {
+        Navigation.NavigateTo($"/calendar?date={entry.Date.ToString("yyyy-MM-dd")}");
+    }
+
+    private void OnSearchChanged()
+    {
+        FilterEntries();
+    }
+
+    private async Task DeleteEntry(JournalEntry entry)
+    {
+        var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the entry for {entry.Date.ToShortDateString()}?");
+        if (confirmed)
+        {
+            await journalService.DeleteEntryAsync(entry.Id);
+            allEntries.Remove(entry);
+            FilterEntries();
+        }
+    }
 }

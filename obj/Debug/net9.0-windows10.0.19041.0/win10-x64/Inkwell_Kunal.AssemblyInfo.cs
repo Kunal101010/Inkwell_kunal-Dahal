@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Inkwell_Kunal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+c05c413ba82331aaf91c9e653ef00a1715393703")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+7f8a0d58056f6ef91df7828b8395d357a3518c2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Inkwell_Kunal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Inkwell_Kunal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

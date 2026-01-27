@@ -14,8 +14,8 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<JournalEntry>()
-            .HasIndex(e => e.Date)
-            .IsUnique(); // Ensures only ONE entry per day at the database level
+            .HasIndex(e => new { e.Date, e.UserId })
+            .IsUnique(); // Ensures only ONE entry per day per user at the database level
 
         // Optional: Improve query performance for common lookups
         modelBuilder.Entity<JournalEntry>()

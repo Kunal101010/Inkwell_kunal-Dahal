@@ -1,66 +1,113 @@
-0:00:00 Microsoft.DataDeletionHelper.End_Conversions
-0:00:00 Microsoft.DataDeletionHelper.End_AggregationService
-0:00:00 Microsoft.DataDeletionHelper.End_SharedStorage
-0:00:00 Microsoft.DataDeletionHelper.End_SharedStorage
-0:00:00 Microsoft.DataDeletionHelper.End_Quota
-0:00:00 Microsoft.DataDeletionHelper.End_Quota
-0:00:00 Microsoft.DataDeletionHelper.End_InterestGroups
-0:00:00 Microsoft.DataDeletionHelper.End_InterestGroups
-0:00:00 Microsoft.DataDeletionHelper.End_PrivateAggregation
-0:00:00 Microsoft.DataDeletionHelper.End_PrivateAggregation
-0:00:00 Microsoft.DataDeletionHelper.End_CdmStorage
-0:00:00 Microsoft.NewBrowser_Popup
-0:00:00 Microsoft.BrowserList.AddBrowser
-0:00:00 Browser1 Insert active Tab1 at 0
-0:00:00 Tab1 StartNav1 #auto_toplevel
-0:00:00 Microsoft.DataDeletionHelper.End_CdmStorage
-0:00:00 Microsoft.DataDeletionHelper.End_DeviceBoundSessions
-0:00:00 Microsoft.DataDeletionHelper.End_DeviceBoundSessions
-0:00:00 Microsoft.DataDeletionHelper.End_Cookies
-0:00:00 Microsoft.DataDeletionHelper.End_Cookies
-0:00:00 Microsoft.DataDeletionHelper.End_SessionStorage
-0:00:00 Microsoft.DataDeletionHelper.End_SessionStorage
-0:00:00 Microsoft.DataDeletionHelper.End_LocalStorage
-0:00:00 Microsoft.DataDeletionHelper.End_LocalStorage
-0:00:00 Tab1 FinishNav1
-0:00:00 Tab1 PageLoad
-0:00:00 Tab1 StartNav2 #typed
-0:00:00 Tab1 FinishNav2
-0:00:00 Tab1 PageLoad
-0:00:02 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
-0:00:04 Autofill_SelectedSuggestion
-0:00:04 Widget Closed: PopupBaseView
-0:00:15 Tab1 StartNav3 #renderer-user #link
-0:00:15 Tab1 FinishNav3
-0:00:16 PasswordManager_LoginPassed
-0:00:18 Tab1 StartNav4 #renderer-user #link
-0:00:18 Tab1 FinishNav4
-0:00:20 Tab1 StartNav5 #renderer-user #link
-0:00:20 Tab1 FinishNav5
-0:00:20 Tab1 StartNav6 #renderer-user #link
-0:00:20 Tab1 FinishNav6
-0:00:21 Tab1 StartNav7 #renderer-user #link
-0:00:21 Tab1 FinishNav7
-0:00:21 Tab1 StartNav8 #renderer-user #link
-0:00:21 Tab1 FinishNav8
-0:00:22 Tab1 StartNav9 #renderer-user #link
-0:00:22 Tab1 FinishNav9
-0:00:22 Tab1 StartNav10 #renderer-user #link
-0:00:22 Tab1 FinishNav10
-0:00:23 Tab1 StartNav11 #renderer-user #link
-0:00:23 Tab1 FinishNav11
-0:00:23 Tab1 PageLoad
-0:00:25 Tab1 StartNav12 #renderer-user #link
-0:00:25 Tab1 FinishNav12
-0:00:26 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
-0:00:27 Autofill_SelectedSuggestion
-0:00:27 Widget Closed: PopupBaseView
-0:00:30 Tab1 StartNav13 #renderer-user #link
-0:00:30 Tab1 FinishNav13
-0:00:30 PasswordManager_LoginPassed
-0:00:32 Tab1 StartNav14 #renderer-user #link
-0:00:32 Tab1 FinishNav14
-0:00:35 Tab1 StartNav15 #renderer-user #link
-0:00:35 Tab1 FinishNav15
-0:00:39 Memory Pressure: Critical
-0:03:37 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
+1:45:58 Tab1 FinishNav79
+1:45:58 PasswordManager_LoginPassed
+1:46:00 Tab1 StartNav80 #renderer-user #link
+1:46:00 Tab1 FinishNav80
+1:46:02 Tab1 StartNav81 #renderer-user #link
+1:46:02 Tab1 FinishNav81
+1:46:03 Reload
+1:46:03 Tab1 StartNav82 #reload
+1:46:03 Tab1 FinishNav82
+1:46:03 Tab1 PageLoad
+1:46:04 Tab1 StartNav83 #renderer-user #link
+1:46:04 Tab1 FinishNav83
+1:46:05 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
+1:46:06 Autofill_SelectedSuggestion
+1:46:06 Widget Closed: PopupBaseView
+1:46:08 Tab1 StartNav84 #renderer-user #link
+1:46:08 Tab1 FinishNav84
+1:46:08 PasswordManager_LoginPassed
+1:46:10 Tab1 StartNav85 #renderer-user #link
+1:46:10 Tab1 FinishNav85
+1:46:12 Tab1 StartNav86 #renderer-user #link
+1:46:12 Tab1 FinishNav86
+1:46:13 Tab1 StartNav87 #renderer-user #link
+1:46:13 Tab1 FinishNav87
+1:46:15 Tab1 StartNav88 #renderer-user #link
+1:46:15 Tab1 FinishNav88
+1:46:16 Tab1 StartNav89 #renderer-user #link
+1:46:16 Tab1 FinishNav89
+1:46:17 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
+1:46:19 Autofill_SelectedSuggestion
+1:46:19 Widget Closed: PopupBaseView
+1:46:22 Tab1 StartNav90 #renderer-user #link
+1:46:22 Tab1 FinishNav90
+1:46:22 PasswordManager_LoginPassed
+1:46:23 Tab1 StartNav91 #renderer-user #link
+1:46:23 Tab1 FinishNav91
+1:46:25 Tab1 StartNav92 #renderer-user #link
+1:46:25 Tab1 FinishNav92
+1:46:27 Tab1 StartNav93 #renderer-user #link
+1:46:27 Tab1 FinishNav93
+1:46:29 Tab1 StartNav94 #renderer-user #link
+1:46:29 Tab1 FinishNav94
+1:46:34 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
+1:46:39 Tab1 StartNav95 #renderer-user #link
+1:46:39 Tab1 FinishNav95
+1:46:39 PasswordManager_LoginPassed
+1:46:40 Tab1 StartNav96 #renderer-user #link
+1:46:40 Tab1 FinishNav96
+1:46:41 Tab1 StartNav97 #renderer-user #link
+1:46:41 Tab1 FinishNav97
+1:46:42 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
+1:46:52 Memory Pressure: Critical
+1:47:11 Memory Pressure: Critical
+1:47:47 Memory Pressure: Critical
+1:48:37 Memory Pressure: Critical
+1:51:13 Tab1 StartNav98 #renderer-user #link
+1:51:13 Tab1 FinishNav98
+1:51:13 PasswordManager_LoginPassed
+1:51:42 Widget Closed: TooltipAura
+1:52:03 Memory Pressure: Critical
+1:52:25 Memory Pressure: Critical
+1:52:54 Tab1 StartNav99 #renderer-user #link
+1:52:54 Tab1 FinishNav99
+1:52:54 PasswordManager_LoginPassed
+1:52:54 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
+1:52:55 Widget Closed: TooltipAura
+1:52:59 Widget Closed: PopupBaseView
+1:53:05 Widget Closed: PopupBaseView
+1:53:15 Tab1 StartNav100 #renderer-user #link
+1:53:15 Tab1 FinishNav100
+1:53:15 PasswordManager_LoginPassed
+1:53:17 Tab1 StartNav101 #renderer-user #link
+1:53:17 Tab1 FinishNav101
+1:53:31 PasswordManager_LoginPassed
+1:53:37 Memory Pressure: Critical
+1:53:41 Widget Closed: TooltipAura
+1:53:53 Widget Closed: TooltipAura
+1:54:07 Memory Pressure: Critical
+1:54:19 Memory Pressure: Critical
+1:59:30 Memory Pressure: Critical
+2:01:46 Tab1 StartNav102 #renderer-user #link
+2:01:46 Tab1 FinishNav102
+2:01:47 PasswordManager_LoginPassed
+2:01:55 Memory Pressure: Critical
+2:02:05 Widget Closed: 
+2:02:08 Tab1 StartNav103 #renderer-user #link
+2:02:08 Tab1 FinishNav103
+2:02:09 Tab1 StartNav104 #renderer-user #link
+2:02:09 Tab1 FinishNav104
+2:02:14 Widget Closed: TooltipAura
+2:02:19 Widget Closed: 
+2:02:26 Memory Pressure: Critical
+2:02:36 Widget Closed: 
+2:02:38 Widget Closed: TooltipAura
+2:02:40 Widget Closed: 
+2:02:43 Widget Closed: 
+2:02:46 Widget Closed: 
+2:02:47 Widget Closed: 
+2:02:48 Widget Closed: 
+2:02:51 Tab1 StartNav105 #renderer-user #link
+2:02:51 Tab1 FinishNav105
+2:02:55 Tab1 StartNav106 #renderer-user #link
+2:02:55 Tab1 FinishNav106
+2:02:55 Microsoft.Autofill.Password.SignIn.NoAutofillSuggestions
+2:02:56 Autofill_SelectedSuggestion
+2:02:56 Widget Closed: PopupBaseView
+2:03:01 Tab1 StartNav107 #renderer-user #link
+2:03:01 Tab1 FinishNav107
+2:03:01 PasswordManager_LoginPassed
+2:03:02 Tab1 StartNav108 #renderer-user #link
+2:03:02 Tab1 FinishNav108
+2:03:16 Memory Pressure: Critical
+2:21:07 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp

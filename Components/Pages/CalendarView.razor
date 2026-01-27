@@ -1,30 +1,372 @@
 @page "/calendar-view"
 @inject JournalService journalService
 @inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
+@using Inkwell_Kunal.Data
 
 <PageTitle>Calendar View - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">📅 Calendar View</h3>
+<div class="calendar-view-container">
+    <div class="page-header">
+        <h3>Calendar View</h3>
+        <p class="page-subtitle">Browse and manage your journal entries by date</p>
+    </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-muted">Calendar view for browsing journal entries by date.</p>
+    <div class="calendar-wrapper">
+        <div class="calendar-header">
+            <button class="btn btn-outline-secondary" @onclick="PreviousMonth">&lt; Previous</button>
+            <h4 class="calendar-title">@currentMonth.ToString("MMMM yyyy")</h4>
+            <button class="btn btn-outline-secondary" @onclick="NextMonth">Next &gt;</button>
+        </div>
 
-                    <div class="text-center mt-4">
-                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/calendar')">
-                            Go to Write Journal
-                        </button>
-                    </div>
+        <div class="calendar-grid">
+            <div class="day-header">Sunday</div>
+            <div class="day-header">Monday</div>
+            <div class="day-header">Tuesday</div>
+            <div class="day-header">Wednesday</div>
+            <div class="day-header">Thursday</div>
+            <div class="day-header">Friday</div>
+            <div class="day-header">Saturday</div>
+
+            @for (int i = 0; i < startDayOfWeek; i++)
+            {
+                <div class="day empty"></div>
+            }
+            @for (int day = 1; day <= daysInMonth; day++)
+            {
+                var date = new DateTime(currentMonth.Year, currentMonth.Month, day);
+                var hasEntry = entryDates.Contains(date.Date);
+                var isToday = date.Date == DateTime.Today;
+                <div class="day @(hasEntry ? "has-entry" : "") @(isToday ? "today" : "")" @onclick="() => SelectDate(date)" title="@date.ToShortDateString()">
+                    @day
                 </div>
+            }
+        </div>
+
+        <div class="calendar-legend">
+            <div class="legend-item">
+                <div class="legend-box has-entry"></div>
+                <span>Has Entry</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box today"></div>
+                <span>Today</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box"></div>
+                <span>No Entry</span>
             </div>
         </div>
     </div>
+
+    @if (selectedDate.HasValue)
+    {
+        <div class="entry-preview-section">
+            <h5>Entry for @selectedDate.Value.ToShortDateString()</h5>
+            @if (selectedEntry != null)
+            {
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h6>@(string.IsNullOrWhiteSpace(selectedEntry.Title) ? "Untitled" : selectedEntry.Title)</h6>
+                        <span class="mood-badge">@selectedEntry.PrimaryMood</span>
+                    </div>
+                    <p class="preview-content">@(selectedEntry.Content?.Length > 150 ? selectedEntry.Content.Substring(0, 150) + "..." : selectedEntry.Content)</p>
+                    <div class="preview-actions">
+                        <button class="btn btn-sm btn-primary" @onclick="EditEntry">Edit Entry</button>
+                        <button class="btn btn-sm btn-outline-secondary" @onclick="ViewEntry">View Full</button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="no-entry-card">
+                    <p>No entry for this date.</p>
+                    <button class="btn btn-success" @onclick="CreateEntry">Create New Entry</button>
+                </div>
+            }
+        </div>
+    }
 </div>
 
+<style>
+    .calendar-view-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h3 {
+        color: #2d3748;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+        color: #718096;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .calendar-wrapper {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .calendar-title {
+        color: #2d3748;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .day-header {
+        text-align: center;
+        font-weight: 700;
+        color: #4a5568;
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .day {
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background-color: #f7fafc;
+        color: #4a5568;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .day:hover {
+        background-color: #e2e8f0;
+        transform: scale(1.05);
+    }
+
+    .day.has-entry {
+        background-color: #48bb78;
+        color: white;
+        box-shadow: 0 2px 4px rgba(72, 187, 120, 0.3);
+    }
+
+    .day.has-entry:hover {
+        background-color: #38a169;
+    }
+
+    .day.today {
+        border-color: #4299e1;
+        font-weight: bold;
+    }
+
+    .day.empty {
+        background-color: transparent;
+        cursor: default;
+    }
+
+    .calendar-legend {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: #4a5568;
+    }
+
+    .legend-box {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        background-color: #f7fafc;
+        border: 2px solid #cbd5e0;
+    }
+
+    .legend-box.has-entry {
+        background-color: #48bb78;
+        border-color: #48bb78;
+    }
+
+    .legend-box.today {
+        border-color: #4299e1;
+        border-width: 2px;
+    }
+
+    .entry-preview-section {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+    }
+
+    .entry-preview-section h5 {
+        color: #2d3748;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .preview-card {
+        background-color: #f7fafc;
+        border-left: 4px solid #48bb78;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .preview-header h6 {
+        margin: 0;
+        color: #2d3748;
+        font-weight: 600;
+    }
+
+    .mood-badge {
+        background-color: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .preview-content {
+        color: #4a5568;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .preview-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .no-entry-card {
+        background-color: #f7fafc;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .no-entry-card p {
+        color: #718096;
+        margin-bottom: 1rem;
+    }
+
+    @@media (max-width: 768px) {
+        .calendar-view-container {
+            padding: 1rem;
+        }
+
+        .day-header {
+            font-size: 0.75rem;
+        }
+
+        .calendar-legend {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+</style>
+
 @code {
-    [Inject] NavigationManager Navigation { get; set; } = default!;
+    private DateTime currentMonth = DateTime.Today;
+    private int daysInMonth;
+    private int startDayOfWeek;
+    private HashSet<DateTime> entryDates = new();
+    private DateTime? selectedDate;
+    private JournalEntry? selectedEntry;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCalendar();
+    }
+
+    private async Task LoadCalendar()
+    {
+        var firstDay = new DateTime(currentMonth.Year, currentMonth.Month, 1);
+        daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+        startDayOfWeek = (int)firstDay.DayOfWeek;
+
+        var entries = await journalService.GetAllEntriesAsync();
+        entryDates = new HashSet<DateTime>(entries.Select(e => e.Date.Date));
+    }
+
+    private async Task PreviousMonth()
+    {
+        currentMonth = currentMonth.AddMonths(-1);
+        await LoadCalendar();
+    }
+
+    private async Task NextMonth()
+    {
+        currentMonth = currentMonth.AddMonths(1);
+        await LoadCalendar();
+    }
+
+    private async Task SelectDate(DateTime date)
+    {
+        selectedDate = date;
+        var entries = await journalService.GetAllEntriesAsync();
+        selectedEntry = entries.FirstOrDefault(e => e.Date.Date == date.Date);
+    }
+
+    private void EditEntry()
+    {
+        if (selectedDate.HasValue)
+        {
+            Navigation.NavigateTo($"/calendar?date={selectedDate.Value.ToString("yyyy-MM-dd")}");
+        }
+    }
+
+    private void ViewEntry()
+    {
+        if (selectedEntry != null)
+        {
+            Navigation.NavigateTo($"/entry/{selectedEntry.Id}");
+        }
+    }
+
+    private void CreateEntry()
+    {
+        if (selectedDate.HasValue)
+        {
+            Navigation.NavigateTo($"/calendar?date={selectedDate.Value.ToString("yyyy-MM-dd")}");
+        }
+    }
 }

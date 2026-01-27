@@ -1,30 +1,32 @@
 @page "/insights"
 @inject JournalService journalService
 @inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
 
 <PageTitle>Insights - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">💡 Insights</h3>
-
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-muted">AI-powered insights and patterns from your journaling.</p>
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/dashboard')">
-                            Back to Dashboard
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="insights-container">
+    <h3>Insights</h3>
+    <p>Analytics and insights will be implemented here.</p>
 </div>
 
+<style>
+    .insights-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .insights-container h3 {
+        color: #2d3748;
+        margin-bottom: 2rem;
+    }
+</style>
+
 @code {
-    [Inject] NavigationManager Navigation { get; set; } = default!;
+    // Future implementation for analytics
+    protected override async Task OnInitializedAsync()
+    {
+        var entries = await journalService.GetAllEntriesAsync();
+        // Implement insights logic here
+    }
 }

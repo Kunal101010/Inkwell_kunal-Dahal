@@ -395,8 +395,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\60zany1z8k-6gzpyzhau4.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\11t1m3x4dk-8inm30yfxf.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\yg2uqpetem-mrv88y0k6w.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\3fs87apccl-klbljquw3d.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\ymx2z1mstz-klbljquw3d.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\staticwebassets.build.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\staticwebassets.development.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\staticwebassets.build.endpoints.json
@@ -408,8 +406,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\staticwebassets.pack.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\tzxjg6is5z-7c7lhmh1j6.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\0wz98yz2xy-f96y5mhlyw.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\3fs87apccl-klbljquw3d.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\ymx2z1mstz-klbljquw3d.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\1ofbxmrgcn-0vm8clk4f5.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\60zany1z8k-6gzpyzhau4.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\compressed\publish\11t1m3x4dk-8inm30yfxf.br

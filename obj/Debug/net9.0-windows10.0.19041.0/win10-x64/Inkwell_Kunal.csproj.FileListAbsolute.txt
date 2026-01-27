@@ -16,12 +16,9 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win1
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\index.html.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\_content\MudBlazor\MudBlazor.min.css.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\js\editor.js.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.klbljquw3d.bundle.scp.css.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\_content\MudBlazor\MudBlazor.min.css.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\js\editor.js.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.klbljquw3d.bundle.scp.css.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.styles.css
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.klbljquw3d.bundle.scp.css
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\css\app.css
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\css\bootstrap\bootstrap.min.css
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\css\bootstrap\bootstrap.min.css.map
@@ -592,8 +589,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win1
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\60zany1z8k-6gzpyzhau4.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\11t1m3x4dk-8inm30yfxf.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\yg2uqpetem-mrv88y0k6w.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\3fs87apccl-klbljquw3d.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\ymx2z1mstz-klbljquw3d.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\staticwebassets.build.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\staticwebassets.development.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\staticwebassets.build.endpoints.json
@@ -605,8 +600,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win1
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\staticwebassets.pack.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\tzxjg6is5z-7c7lhmh1j6.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\0wz98yz2xy-f96y5mhlyw.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\3fs87apccl-klbljquw3d.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\ymx2z1mstz-klbljquw3d.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\1ofbxmrgcn-0vm8clk4f5.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\60zany1z8k-6gzpyzhau4.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\11t1m3x4dk-8inm30yfxf.br
@@ -738,3 +731,7 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win1
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\ymx2z1mstz-i0aknpu9t7.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\3fs87apccl-i0aknpu9t7.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\compressed\publish\ymx2z1mstz-i0aknpu9t7.br
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.i0aknpu9t7.bundle.scp.css.br
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.i0aknpu9t7.bundle.scp.css.gz
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\wwwroot\Inkwell_Kunal.i0aknpu9t7.bundle.scp.css
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\BCrypt.Net-Next.dll

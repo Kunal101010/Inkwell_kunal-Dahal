@@ -20,8 +20,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\1ofbx
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\60zany1z8k-6gzpyzhau4.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\11t1m3x4dk-8inm30yfxf.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\yg2uqpetem-mrv88y0k6w.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\3fs87apccl-klbljquw3d.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\ymx2z1mstz-klbljquw3d.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\staticwebassets.build.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\staticwebassets.development.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\staticwebassets.build.endpoints.json
@@ -33,8 +31,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\staticwebassets\
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\staticwebassets.pack.json
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\tzxjg6is5z-7c7lhmh1j6.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\0wz98yz2xy-f96y5mhlyw.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\3fs87apccl-klbljquw3d.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\ymx2z1mstz-klbljquw3d.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\1ofbxmrgcn-0vm8clk4f5.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\60zany1z8k-6gzpyzhau4.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\11t1m3x4dk-8inm30yfxf.br
@@ -1506,12 +1502,9 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\c
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\index.html.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\_content\MudBlazor\MudBlazor.min.css.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\js\editor.js.br
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.klbljquw3d.bundle.scp.css.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\_content\MudBlazor\MudBlazor.min.css.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\js\editor.js.gz
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.klbljquw3d.bundle.scp.css.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.styles.css
-D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.klbljquw3d.bundle.scp.css
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\css\app.css
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\css\bootstrap\bootstrap.min.css
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\css\bootstrap\bootstrap.min.css.map
@@ -1572,3 +1565,6 @@ D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\3fs87
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\ymx2z1mstz-i0aknpu9t7.gz
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\3fs87apccl-i0aknpu9t7.br
 D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\compressed\publish\ymx2z1mstz-i0aknpu9t7.br
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.i0aknpu9t7.bundle.scp.css.br
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.i0aknpu9t7.bundle.scp.css.gz
+D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\obj\Debug\net9.0-android\assets\wwwroot\Inkwell_Kunal.i0aknpu9t7.bundle.scp.css

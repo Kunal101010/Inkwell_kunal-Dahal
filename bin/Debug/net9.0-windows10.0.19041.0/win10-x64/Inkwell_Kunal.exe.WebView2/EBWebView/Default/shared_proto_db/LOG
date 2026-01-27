@@ -1,3 +1,6 @@
-2026/01/17-23:11:01.565 837c Reusing MANIFEST D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Inkwell_Kunal.exe.WebView2\EBWebView\Default\shared_proto_db/MANIFEST-000001
-2026/01/17-23:11:01.567 837c Recovering log #3
-2026/01/17-23:11:01.572 837c Reusing old log D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Inkwell_Kunal.exe.WebView2\EBWebView\Default\shared_proto_db/000003.log 
+2026/01/28-00:37:50.578 72e8 Reusing MANIFEST D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Inkwell_Kunal.exe.WebView2\EBWebView\Default\shared_proto_db/MANIFEST-000001
+2026/01/28-00:37:50.581 72e8 Recovering log #4
+2026/01/28-00:37:50.583 72e8 Reusing old log D:\Desktop\Inkwell_Kunal\Inkwell_Kunal\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Inkwell_Kunal.exe.WebView2\EBWebView\Default\shared_proto_db/000004.log 
+2026/01/28-02:40:58.062 5f90 Level-0 table #8: started
+2026/01/28-02:40:58.067 5f90 Level-0 table #8: 597350 bytes OK
+2026/01/28-02:40:58.071 5f90 Delete type=0 #4

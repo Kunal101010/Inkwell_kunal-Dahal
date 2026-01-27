@@ -1,128 +1,48 @@
 @page "/calendar"
-@inject JournalService JournalService
-@inject IJSRuntime JSRuntime
-@using Inkwell_Kunal.Data
+@page "/calendar/{date}"
+@inject JournalService journalService
+@inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
-@using Markdig
+@using Inkwell_Kunal.Data
+@inject IJSRuntime JSRuntime
 
-<PageTitle>Inkwell Journal</PageTitle>
+<PageTitle>Write Journal - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">Inkwell Journal</h3>
-
-<div class="container">
-    <!-- Calendar Navigation -->
-    <div class="calendar mb-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <button class="btn btn-outline-primary" @onclick="PrevMonth">&lt;</button>
-            <h4>@currentMonth.ToString("MMMM yyyy")</h4>
-            <div class="ms-3 text-end">
-                <div class="small text-muted">🔥 Streak</div>
-                <div class="fw-bold">@calendarCurrentStreak<span class="text-muted">d</span> • longest @calendarLongestStreak</div>
-            </div>
-            <button class="btn btn-outline-primary" @onclick="NextMonth">&gt;</button>
-        </div>
-        <div class="calendar-grid">
-            <div class="day-header">Sun</div>
-            <div class="day-header">Mon</div>
-            <div class="day-header">Tue</div>
-            <div class="day-header">Wed</div>
-            <div class="day-header">Thu</div>
-            <div class="day-header">Fri</div>
-            <div class="day-header">Sat</div>
-            @foreach (var day in GetCalendarDays())
-            {
-                if (day.HasValue)
-                {
-                    var hasEntry = entryDates.Contains(day.Value.Date);
-                    var isSelected = day.Value.Date == SelectedDate.Date;
-                    var isToday = day.Value.Date == DateTime.Today;
-                    <div class="day @(hasEntry ? "has-entry" : "") @(isSelected ? "selected" : "") @(isToday ? "today" : "")" @onclick="() => SelectDate(day.Value)">
-                        @day.Value.Day
-                    </div>
-                }
-                else
-                {
-                    <div class="day empty"></div>
-                }
-            }
-        </div>
+<div class="journal-write-container">
+    <div class="page-header">
+        <h3>Write Journal Entry</h3>
+        <p class="page-subtitle">@selectedDate.ToString("dddd, MMMM d, yyyy")</p>
     </div>
 
-    <div class="row mb-4">
-        <div class="col-md-6 offset-md-3">
-            <label class="form-label fw-bold">Or select date directly:</label>
-            <input type="date" class="form-control" @bind="SelectedDate" @bind:after="LoadEntry" />
-        </div>
-    </div>
-
-    @if (currentEntry != null)
-    {
-        <!-- Existing Entry -->
-        <div class="card border-primary shadow-sm">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="mb-0">@SelectedDate.ToLongDateString()</h5>
-                    @if (!string.IsNullOrEmpty(currentEntry?.PrimaryMood))
-                    {
-                        <div class="mt-1">
-                            <span class="badge bg-light text-primary me-1">@currentEntry!.PrimaryMood</span>
-                            @if (!string.IsNullOrEmpty(currentEntry.SecondaryMood1))
-                            {
-                                <span class="badge bg-light text-secondary me-1">@currentEntry.SecondaryMood1</span>
-                            }
-                            @if (!string.IsNullOrEmpty(currentEntry.SecondaryMood2))
-                            {
-                                <span class="badge bg-light text-secondary">@currentEntry.SecondaryMood2</span>
-                            }
-                        </div>
-                    }
-                    @if (!string.IsNullOrEmpty(currentEntry?.Tags))
-                    {
-                        <div class="mt-1">
-                            @foreach (var tag in currentEntry!.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
-                            {
-                                <span class="badge bg-info text-dark me-1">@tag</span>
-                            }
-                        </div>
-                    }
+    <div class="journal-form-wrapper">
+        <form @onsubmit="SaveEntry" @onsubmit:preventDefault="true">
+            <!-- Quick Info Section -->
+            <div class="info-section">
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="info-label">Date</span>
+                        <span class="info-value">@selectedDate.ToShortDateString()</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Time</span>
+                        <span class="info-value">@DateTime.Now.ToString("h:mm tt")</span>
+                    </div>
                 </div>
-                <button class="btn btn-danger btn-sm" @onclick="DeleteEntry">
-                    Delete Entry
-                </button>
             </div>
-            <div class="card-body">
-                <!-- Title Input -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Entry Title (Optional)</label>
-                    <input type="text" class="form-control" @bind="currentEntry.Title" placeholder="Give your entry a title..." />
-                </div>
 
-                <!-- Mood Selection -->
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label fw-bold">Primary Mood <span class="text-danger">*</span></label>
-                        <select class="form-select" @bind="selectedPrimaryMood" required>
-                            <option value="">Select Primary Mood</option>
-                            @foreach (var mood in JournalService.AvailableMoods)
-                            {
-                                <option value="@mood">@mood</option>
-                            }
-                        </select>
+            <!-- Title and Mood Section -->
+            <div class="section-card">
+                <h5 class="section-title">Entry Details</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-7">
+                        <label class="form-label">Title <span class="optional">(Optional)</span></label>
+                        <input type="text" class="form-control" @bind="title" placeholder="Give your entry a meaningful title..." />
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Secondary Mood 1 (Optional)</label>
-                        <select class="form-select" @bind="selectedSecondaryMood1">
-                            <option value="">None</option>
-                            @foreach (var mood in JournalService.AvailableMoods)
-                            {
-                                <option value="@mood">@mood</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Secondary Mood 2 (Optional)</label>
-                        <select class="form-select" @bind="selectedSecondaryMood2">
-                            <option value="">None</option>
+                    <div class="form-group col-md-5">
+                        <label class="form-label">Primary Mood <span class="required">*</span></label>
+                        <select class="form-select" @bind="primaryMood" required>
+                            <option value="">Select your mood</option>
                             @foreach (var mood in JournalService.AvailableMoods)
                             {
                                 <option value="@mood">@mood</option>
@@ -130,349 +50,622 @@
                         </select>
                     </div>
                 </div>
+            </div>
 
-                <!-- Tags -->
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <label class="form-label fw-bold">Tags (comma-separated)</label>
-                        <input type="text" class="form-control" @bind="tags" placeholder="e.g., Work, Family, Reflection" />
-                        <div class="mt-2">
-                            <small class="text-muted">Suggested tags:</small>
-                            @foreach (var tag in JournalService.SuggestedTags)
-                            {
-                                <button class="btn btn-outline-secondary btn-sm me-1 mb-1" @onclick="() => AddTag(tag)">@tag</button>
-                            }
+            <!-- Content Section -->
+            <div class="section-card">
+                <h5 class="section-title">Your Thoughts</h5>
+                <label class="form-label">Journal Entry</label>
+                <div class="editor-wrapper">
+                    <div class="editor-toolbar">
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("bold"))" title="Bold">
+                                <strong>B</strong>
+                            </button>
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("italic"))" title="Italic">
+                                <em>I</em>
+                            </button>
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("underline"))" title="Underline">
+                                <u>U</u>
+                            </button>
                         </div>
+                        <div class="toolbar-divider"></div>
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("h1"))" title="Heading 1">H1</button>
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("h2"))" title="Heading 2">H2</button>
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("h3"))" title="Heading 3">H3</button>
+                        </div>
+                        <div class="toolbar-divider"></div>
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("ul"))" title="Bullet List">≡</button>
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("ol"))" title="Numbered List">1.</button>
+                            <button type="button" class="toolbar-btn" @onclick="@(() => ApplyFormat("blockquote"))" title="Quote">❝</button>
+                        </div>
+                        <div class="toolbar-divider"></div>
+                        <button type="button" class="toolbar-btn" @onclick="InsertLink" title="Link">🔗</button>
+                    </div>
+                    <textarea class="journal-textarea" @bind="content" placeholder="Write your thoughts, feelings, and reflections here..."></textarea>
+                    <div class="editor-footer">
+                        <small class="form-hint">💡 Tip: Use markdown formatting. **bold** *italic* # Heading</small>
+                        <span class="word-count">@content.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length words</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- Toolbar -->
-                <div class="toolbar mb-3 d-flex flex-wrap gap-2">
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertBold" title="Bold"><strong>B</strong></button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertItalic" title="Italic"><em>I</em></button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertH1" title="Heading 1">H1</button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertH2" title="Heading 2">H2</button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertH3" title="Heading 3">H3</button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertBulletList" title="Bullet List">• List</button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertNumberedList" title="Numbered List">1. List</button>
-                    <button class="btn btn-outline-secondary btn-sm" @onclick="InsertLink" title="Link">🔗</button>
+            <!-- Mood and Tags Section -->
+            <div class="section-card">
+                <h5 class="section-title">Additional Moods & Tags</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Secondary Mood 1</label>
+                        <select class="form-select" @bind="secondaryMood1">
+                            <option value="">Optional</option>
+                            @foreach (var mood in JournalService.AvailableMoods)
+                            {
+                                <option value="@mood">@mood</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Secondary Mood 2</label>
+                        <select class="form-select" @bind="secondaryMood2">
+                            <option value="">Optional</option>
+                            @foreach (var mood in JournalService.AvailableMoods)
+                            {
+                                <option value="@mood">@mood</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control" @bind="tags" placeholder="Work, Health, Family..." list="suggestedTags" />
+                        <datalist id="suggestedTags">
+                            @foreach (var suggestedTag in JournalService.SuggestedTags)
+                            {
+                                <option value="@suggestedTag" />
+                            }
+                        </datalist>
+                    </div>
                 </div>
+                <small class="form-hint">Suggested tags: @string.Join(", ", JournalService.SuggestedTags.Take(6))</small>
+            </div>
 
-                <textarea id="journal-editor" @bind="currentMarkdown" @oninput="UpdatePreview"
-                          class="form-control monospace-font" 
-                          rows="15" 
-                          placeholder="Write your journal entry here using Markdown..."></textarea>
-
-                <div class="mt-4 preview-box p-4 border rounded bg-light">
-                    @if (string.IsNullOrWhiteSpace(currentMarkdown))
-                    {
-                        <p class="text-muted">Start typing to see live preview...</p>
-                    }
-                    else
-                    {
-                        @((MarkupString)renderedHtml)
-                    }
+            <!-- Security Section -->
+            <div class="section-card">
+                <h5 class="section-title">Privacy</h5>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="isLocked" @bind="isLocked" />
+                    <label class="form-check-label" for="isLocked">Password protect this entry</label>
                 </div>
+                @if (isLocked)
+                {
+                    <div class="form-group mt-3">
+                        <label class="form-label">Lock Password</label>
+                        <input type="password" class="form-control" @bind="lockPassword" placeholder="Enter a secure password" />
+                        <small class="form-hint">This entry will require a password to view</small>
+                    </div>
+                }
+            </div>
 
-                <div class="mt-4 text-muted small">
-                    <strong>Created:</strong> @currentEntry.CreatedAt.ToString("f")
-                    @if (currentEntry.UpdatedAt.HasValue)
-                    {
-                        <br /><strong>Last Updated:</strong> @currentEntry.UpdatedAt.Value.ToString("f")
-                    }
-                </div>
-
-                <div class="mt-4">
-                    <button class="btn btn-success btn-lg" @onclick="SaveEntry">
-                        Save Entry
+            <!-- Action Section -->
+            <div class="action-section">
+                @if (!string.IsNullOrEmpty(message))
+                {
+                    <div class="alert alert-@messageType alert-dismissible fade show">
+                        @message
+                    </div>
+                }
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary btn-save" disabled="@isSaving">
+                        <span class="btn-icon">💾</span>
+                        @(isSaving ? "Saving..." : "Save Entry")
                     </button>
-                    @if (saveMessage != null)
-                    {
-                        <span class="ms-3 text-success fw-bold fs-5">@saveMessage</span>
-                    }
+                    <button type="button" class="btn btn-outline-secondary" @onclick="Cancel">Cancel</button>
                 </div>
             </div>
-        </div>
-    }
-    else if (SelectedDate <= DateTime.Today)
-    {
-        <!-- No Entry Yet -->
-        <div class="alert alert-info text-center p-5">
-            <h4>No entry yet for <strong>@SelectedDate.ToLongDateString()</strong></h4>
-            <p>Start writing your thoughts today!</p>
-            <button class="btn btn-primary btn-lg" @onclick="CreateNewEntry">
-                Create New Entry
-            </button>
-        </div>
-    }
-    else
-    {
-        <!-- Future Date -->
-        <div class="alert alert-warning text-center p-5">
-            <h4>Future entries are not allowed</h4>
-            <p>Come back on that day to write your thoughts!</p>
-        </div>
-    }
+        </form>
+    </div>
 </div>
 
+<style>
+    .journal-write-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h3 {
+        color: #2d3748;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .page-subtitle {
+        color: #718096;
+        font-size: 1.1rem;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    .journal-form-wrapper {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .info-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+    }
+
+    .info-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-label {
+        font-size: 0.85rem;
+        opacity: 0.9;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .section-card {
+        padding: 2rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-card:last-of-type {
+        border-bottom: none;
+    }
+
+    .section-title {
+        color: #2d3748;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #667eea;
+        display: inline-block;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: 0.95rem;
+    }
+
+    .required {
+        color: #f56565;
+    }
+
+    .optional {
+        color: #a0aec0;
+        font-weight: 400;
+        font-size: 0.85rem;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        padding: 12px 14px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+    }
+
+    .editor-wrapper {
+        background-color: #f7fafc;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .editor-wrapper:focus-within {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .editor-toolbar {
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem;
+        background-color: #f7fafc;
+        border-bottom: 2px solid #e2e8f0;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .toolbar-group {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    .toolbar-divider {
+        width: 1px;
+        height: 28px;
+        background-color: #cbd5e0;
+        margin: 0 0.5rem;
+    }
+
+    .toolbar-btn {
+        background-color: #ffffff;
+        border: 1px solid #cbd5e0;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        color: #4a5568;
+    }
+
+    .toolbar-btn:hover {
+        background-color: #667eea;
+        color: white;
+        border-color: #667eea;
+        transform: translateY(-2px);
+    }
+
+    .toolbar-btn:active {
+        transform: translateY(0);
+    }
+
+    .journal-textarea {
+        width: 100%;
+        border: none;
+        padding: 1.5rem;
+        font-family: 'Segoe UI', Menlo, monospace;
+        font-size: 1rem;
+        line-height: 1.6;
+        resize: vertical;
+        min-height: 400px;
+        background-color: #ffffff;
+        color: #2d3748;
+    }
+
+    .journal-textarea:focus {
+        outline: none;
+    }
+
+    .editor-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        background-color: #f7fafc;
+        border-top: 1px solid #e2e8f0;
+        font-size: 0.85rem;
+    }
+
+    .form-hint {
+        color: #718096;
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    .word-count {
+        color: #a0aec0;
+        font-weight: 600;
+    }
+
+    .form-check {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-check-input {
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        cursor: pointer;
+        accent-color: #667eea;
+    }
+
+    .form-check-label {
+        margin-left: 0.75rem;
+        cursor: pointer;
+        color: #2d3748;
+        font-weight: 500;
+    }
+
+    .action-section {
+        padding: 2rem;
+        background-color: #f7fafc;
+        border-top: 2px solid #e2e8f0;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+
+    .btn-primary {
+        background-color: #667eea;
+        color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+        background-color: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .btn-outline-secondary {
+        color: #718096;
+        border-color: #cbd5e0;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #e2e8f0;
+        border-color: #a0aec0;
+    }
+
+    .btn-icon {
+        margin-right: 0.5rem;
+    }
+
+    .alert {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .alert-success {
+        background-color: #c6f6d5;
+        color: #22543d;
+        border: 1px solid #9ae6b4;
+    }
+
+    .alert-danger {
+        background-color: #fed7d7;
+        color: #742a2a;
+        border: 1px solid #fc8181;
+    }
+
+    .alert-warning {
+        background-color: #feebc8;
+        color: #7c2d12;
+        border: 1px solid #fbd38d;
+    }
+
+    @@media (max-width: 768px) {
+        .journal-write-container {
+            padding: 1rem;
+        }
+
+        .page-header h3 {
+            font-size: 2rem;
+        }
+
+        .section-card {
+            padding: 1.5rem;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .info-row {
+            gap: 1rem;
+        }
+
+        .button-group {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        .editor-toolbar {
+            gap: 0.25rem;
+        }
+
+        .toolbar-divider {
+            display: none;
+        }
+
+        .journal-textarea {
+            min-height: 300px;
+        }
+    }
+</style>
+
 @code {
-    [SupplyParameterFromQuery]
-    public DateTime? Date { get; set; }
+    [Parameter]
+    public string? Date { get; set; }
 
-    private DateTime SelectedDate = DateTime.Today;
-    private JournalEntry? currentEntry;
-    private string currentMarkdown = string.Empty;
-    private string renderedHtml = string.Empty;
-    private string? saveMessage;
-
-    private string? selectedPrimaryMood;
-    private string? selectedSecondaryMood1;
-    private string? selectedSecondaryMood2;
+    private DateTime selectedDate = DateTime.Today;
+    private string title = "";
+    private string content = "";
+    private string primaryMood = "";
+    private string secondaryMood1 = "";
+    private string secondaryMood2 = "";
     private string tags = "";
-    private DateTime currentMonth = DateTime.Today;
-    private List<DateTime> entryDates = new();
-
-    private readonly MarkdownPipeline pipeline = new MarkdownPipelineBuilder()
-        .UseAdvancedExtensions()
-        .Build();
-
-    private int calendarCurrentStreak = 0;
-    private int calendarLongestStreak = 0;
-    private List<DateTime> calendarMissedDates = new();
-    private int calendarStreakLookbackDays = 30;
+    private string lockPassword = "";
+    private bool isLocked = false;
+    private bool isSaving = false;
+    private string message = "";
+    private string messageType = "info";
+    private JournalEntry? existingEntry;
 
     protected override async Task OnInitializedAsync()
     {
-        JournalService.OnChange += OnJournalChanged;
-        await LoadEntryDates();
-        await LoadStreakInfo();
-        await LoadEntry();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        if (Date.HasValue)
+        try
         {
-            SelectedDate = Date.Value.Date;
+            // Parse date from URL parameter
+            if (!string.IsNullOrEmpty(Date) && DateTime.TryParse(Date, out var parsedDate))
+            {
+                selectedDate = parsedDate.Date;
+            }
+
+            // Load existing entry if present
+            var entries = await journalService.GetAllEntriesAsync();
+            existingEntry = entries.FirstOrDefault(e => e.Date.Date == selectedDate.Date);
+            
+            if (existingEntry != null && !existingEntry.IsLocked)
+            {
+                title = existingEntry.Title ?? "";
+                content = existingEntry.Content ?? "";
+                primaryMood = existingEntry.PrimaryMood ?? "";
+                secondaryMood1 = existingEntry.SecondaryMood1 ?? "";
+                secondaryMood2 = existingEntry.SecondaryMood2 ?? "";
+                tags = existingEntry.Tags ?? "";
+                isLocked = existingEntry.IsLocked;
+            }
         }
-        await base.OnParametersSetAsync();
-    }
-
-    private async Task LoadEntry()
-    {
-        currentEntry = await JournalService.GetEntryAsync(SelectedDate);
-        currentMarkdown = currentEntry?.Content ?? string.Empty;
-        selectedPrimaryMood = currentEntry?.PrimaryMood;
-        selectedSecondaryMood1 = currentEntry?.SecondaryMood1;
-        selectedSecondaryMood2 = currentEntry?.SecondaryMood2;
-        tags = currentEntry?.Tags ?? "";
-        UpdatePreview();
-        saveMessage = null;
-        StateHasChanged();
-    }
-
-    private void UpdatePreview()
-    {
-        renderedHtml = string.IsNullOrWhiteSpace(currentMarkdown)
-            ? string.Empty
-            : Markdown.ToHtml(currentMarkdown, pipeline);
-        StateHasChanged();
-    }
-
-    private void CreateNewEntry()
-    {
-        currentEntry = new JournalEntry
+        catch (Exception ex)
         {
-            Date = SelectedDate.Date,
-            Content = string.Empty,
-            CreatedAt = DateTime.Now
-        };
-        currentMarkdown = string.Empty;
-        selectedPrimaryMood = null;
-        selectedSecondaryMood1 = null;
-        selectedSecondaryMood2 = null;
-        tags = "";
-        UpdatePreview();
-        StateHasChanged();
+            message = $"Error loading entry: {ex.Message}";
+            messageType = "warning";
+        }
+    }
+
+    private void ApplyFormat(string format)
+    {
+        switch (format)
+        {
+            case "bold":
+                content += " **bold text** ";
+                break;
+            case "italic":
+                content += " *italic text* ";
+                break;
+            case "underline":
+                content += " __underlined text__ ";
+                break;
+            case "h1":
+                content += "\n# Heading 1\n";
+                break;
+            case "h2":
+                content += "\n## Heading 2\n";
+                break;
+            case "h3":
+                content += "\n### Heading 3\n";
+                break;
+            case "ul":
+                content += "\n- List item 1\n- List item 2\n";
+                break;
+            case "ol":
+                content += "\n1. List item 1\n2. List item 2\n";
+                break;
+            case "blockquote":
+                content += "\n> Quote text here\n";
+                break;
+        }
+    }
+
+    private void InsertLink()
+    {
+        content += "[Link text](https://example.com)";
     }
 
     private async Task SaveEntry()
     {
-        if (currentEntry != null && !string.IsNullOrWhiteSpace(currentMarkdown.Trim()) && !string.IsNullOrWhiteSpace(selectedPrimaryMood))
+        if (string.IsNullOrWhiteSpace(content))
         {
-            await JournalService.SaveEntryAsync(SelectedDate, currentMarkdown.Trim(), currentEntry.Title, selectedPrimaryMood, selectedSecondaryMood1, selectedSecondaryMood2, tags.Trim());
-
-            if (currentEntry.CreatedAt == default)
-                currentEntry.CreatedAt = DateTime.Now;
-            currentEntry.UpdatedAt = DateTime.Now;
-
-            saveMessage = "Entry saved successfully! ✅";
-            UpdatePreview();
-            await LoadEntryDates();
-            StateHasChanged();
+            message = "Please enter some content.";
+            messageType = "danger";
+            return;
         }
-        else if (string.IsNullOrWhiteSpace(selectedPrimaryMood))
+
+        if (string.IsNullOrWhiteSpace(primaryMood))
         {
-            saveMessage = "Please select a primary mood.";
-            StateHasChanged();
+            message = "Please select a primary mood.";
+            messageType = "danger";
+            return;
         }
-    }
 
-    private async Task DeleteEntry()
-    {
-        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm",
-            "Are you sure you want to permanently delete this entire entry?");
-
-        if (confirmed)
-        {
-            await JournalService.DeleteEntryAsync(SelectedDate);
-            currentEntry = null;
-            currentMarkdown = string.Empty;
-            renderedHtml = string.Empty;
-            saveMessage = "Entry deleted.";
-            await LoadEntryDates();
-            StateHasChanged();
-        }
-    }
-
-    private void OnJournalChanged()
-    {
-        InvokeAsync(async () =>
-        {
-            await LoadEntry();
-            await LoadStreakInfo();
-        });
-    }
-
-    private async Task LoadStreakInfo()
-    {
+        isSaving = true;
         try
         {
-            var info = await JournalService.GetStreakInfoAsync(calendarStreakLookbackDays);
-            calendarCurrentStreak = info.CurrentStreak;
-            calendarLongestStreak = info.LongestStreak;
-            calendarMissedDates = info.MissedDates;
-            StateHasChanged();
+            await journalService.SaveEntryAsync(selectedDate, content, title, primaryMood, secondaryMood1, secondaryMood2, tags);
+            
+            if (isLocked && !string.IsNullOrWhiteSpace(lockPassword))
+            {
+                await journalService.LockEntryAsync(selectedDate, lockPassword);
+            }
+
+            message = "Entry saved successfully!";
+            messageType = "success";
+            await Task.Delay(2000);
+            Navigation.NavigateTo("/calendar-view");
         }
-        catch
+        catch (Exception ex)
         {
-            // ignore errors here
+            message = $"Error saving entry: {ex.Message}";
+            messageType = "danger";
         }
-    }
-
-    private async Task InsertBold() => await JSRuntime.InvokeVoidAsync("editorUtils.insertMarkdown", "journal-editor", "**", "**");
-    private async Task InsertItalic() => await JSRuntime.InvokeVoidAsync("editorUtils.insertMarkdown", "journal-editor", "*", "*");
-    private async Task InsertH1() => await JSRuntime.InvokeVoidAsync("editorUtils.insertHeading", "journal-editor", 1);
-    private async Task InsertH2() => await JSRuntime.InvokeVoidAsync("editorUtils.insertHeading", "journal-editor", 2);
-    private async Task InsertH3() => await JSRuntime.InvokeVoidAsync("editorUtils.insertHeading", "journal-editor", 3);
-    private async Task InsertBulletList() => await JSRuntime.InvokeVoidAsync("editorUtils.insertList", "journal-editor", "bullet");
-    private async Task InsertNumberedList() => await JSRuntime.InvokeVoidAsync("editorUtils.insertList", "journal-editor", "numbered");
-    private async Task LoadEntryDates()
-    {
-        entryDates = await JournalService.GetEntryDatesAsync();
-    }
-
-    private void PrevMonth()
-    {
-        currentMonth = currentMonth.AddMonths(-1);
-        StateHasChanged();
-    }
-
-    private void NextMonth()
-    {
-        currentMonth = currentMonth.AddMonths(1);
-        StateHasChanged();
-    }
-
-    private async Task SelectDate(DateTime date)
-    {
-        SelectedDate = date;
-        await LoadEntry();
-    }
-
-    private List<DateTime?> GetCalendarDays()
-    {
-        var days = new List<DateTime?>();
-        var firstDay = new DateTime(currentMonth.Year, currentMonth.Month, 1);
-        var startDate = firstDay.AddDays(-(int)firstDay.DayOfWeek);
-        for (int i = 0; i < 42; i++)
+        finally
         {
-            var date = startDate.AddDays(i);
-            if (date.Month == currentMonth.Month)
-                days.Add(date);
-            else
-                days.Add(null);
-        }
-        return days;
-    }
-
-    private async Task InsertLink() => await JSRuntime.InvokeVoidAsync("editorUtils.insertLink", "journal-editor");
-
-    private void AddTag(string tag)
-    {
-        var currentTags = tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
-        if (!currentTags.Contains(tag, StringComparer.OrdinalIgnoreCase))
-        {
-            currentTags.Add(tag);
-            tags = string.Join(", ", currentTags);
+            isSaving = false;
         }
     }
 
-    public void Dispose()
+    private void Cancel()
     {
-        JournalService.OnChange -= OnJournalChanged;
+        Navigation.NavigateTo("/calendar-view");
     }
 }
-
-<style>
-    .monospace-font {
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-
-    .preview-box h1, .preview-box h2, .preview-box h3,
-    .preview-box h4, .preview-box h5, .preview-box h6 {
-        margin-top: 1.5em;
-        margin-bottom: 0.5em;
-        color: #1a1a1a;
-    }
-
-    .preview-box ul, .preview-box ol {
-        padding-left: 2em;
-        margin-bottom: 1em;
-    }
-
-    .preview-box blockquote {
-        border-left: 4px solid #007bff;
-        padding-left: 1em;
-        background: rgba(0,123,255,0.1);
-        border-radius: 4px;
-        padding: 1em;
-        color: #495057;
-        margin: 1em 0;
-    }
-
-    .preview-box code {
-        background: #e9ecef;
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .preview-box pre {
-        background: #2d3748;
-        color: #e2e8f0;
-        padding: 1em;
-        border-radius: 8px;
-        overflow-x: auto;
-    }
-
-    .preview-box a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    .preview-box a:hover {
-        text-decoration: underline;
-    }
-</style>

@@ -1,30 +1,286 @@
 @page "/search"
 @inject JournalService journalService
 @inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
+@using Inkwell_Kunal.Data
 
 <PageTitle>Search & Filter - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">🔍 Search & Filter</h3>
+<div class="search-page">
+    <div class="page-header">
+        <h3>Search & Filter</h3>
+        <p class="page-subtitle">Find entries by text, date, mood, or tags</p>
+    </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-muted">Advanced search and filtering for journal entries.</p>
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/dashboard')">
-                            Back to Dashboard
-                        </button>
-                    </div>
-                </div>
+    <div class="filters-section">
+        <h5>Filters</h5>
+        <div class="filters-row">
+            <div class="filter-group">
+                <label>Search Text</label>
+                <input type="text" class="form-control" placeholder="Title or content..." @bind="searchTerm" />
+            </div>
+            <div class="filter-group">
+                <label>From Date</label>
+                <input type="date" class="form-control" @bind="startDate" />
+            </div>
+            <div class="filter-group">
+                <label>To Date</label>
+                <input type="date" class="form-control" @bind="endDate" />
+            </div>
+            <div class="filter-group">
+                <label>Mood</label>
+                <select class="form-select" @bind="selectedMood">
+                    <option value="">All Moods</option>
+                    @foreach (var mood in JournalService.AvailableMoods)
+                    {
+                        <option value="@mood">@mood</option>
+                    }
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Tag</label>
+                <input type="text" class="form-control" placeholder="Filter by tag..." @bind="tagFilter" />
+            </div>
+            <div class="filter-group">
+                <button class="btn btn-primary" @onclick="ApplyFilters">Search</button>
             </div>
         </div>
     </div>
+
+    @if (filteredEntries.Any())
+    {
+        <div class="results-section">
+            <h5>Results (<span class="result-count">@filteredEntries.Count</span>)</h5>
+            <div class="results-table-wrapper">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Mood</th>
+                            <th>Preview</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var entry in filteredEntries)
+                        {
+                            <tr>
+                                <td>@entry.Date.ToShortDateString()</td>
+                                <td>@(string.IsNullOrWhiteSpace(entry.Title) ? "Untitled" : entry.Title)</td>
+                                <td><span class="mood-badge">@entry.PrimaryMood</span></td>
+                                <td>@(entry.Content?.Length > 50 ? entry.Content.Substring(0, 50) + "..." : entry.Content)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" @onclick="() => ViewEntry(entry)">View</button>
+                                    <button class="btn btn-sm btn-outline-secondary" @onclick="() => EditEntry(entry)">Edit</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="no-results">
+            <p>No entries match your search criteria.</p>
+        </div>
+    }
 </div>
 
+<style>
+    .search-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h3 {
+        color: #2d3748;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+        color: #718096;
+        margin: 0;
+    }
+
+    .filters-section {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .filters-section h5 {
+        color: #2d3748;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .filters-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-group label {
+        color: #4a5568;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .filter-group .form-control,
+    .filter-group .form-select {
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        padding: 10px 12px;
+    }
+
+    .filter-group .form-control:focus,
+    .filter-group .form-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .results-section {
+        margin-top: 2rem;
+    }
+
+    .results-section h5 {
+        color: #2d3748;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .result-count {
+        color: #667eea;
+        font-weight: 700;
+    }
+
+    .results-table-wrapper {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .results-table-wrapper table {
+        margin: 0;
+    }
+
+    .results-table-wrapper th {
+        background-color: #f7fafc;
+        color: #4a5568;
+        font-weight: 600;
+        padding: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .results-table-wrapper td {
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .results-table-wrapper tbody tr:hover {
+        background-color: #f7fafc;
+    }
+
+    .mood-badge {
+        background-color: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 3rem 2rem;
+        background-color: #f7fafc;
+        border-radius: 12px;
+        color: #718096;
+    }
+
+    @@media (max-width: 768px) {
+        .filters-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
 @code {
-    [Inject] NavigationManager Navigation { get; set; } = default!;
+    private List<JournalEntry> allEntries = new();
+    private List<JournalEntry> filteredEntries = new();
+    private string searchTerm = "";
+    private DateTime? startDate;
+    private DateTime? endDate;
+    private string selectedMood = "";
+    private string tagFilter = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        allEntries = await journalService.GetAllEntriesAsync();
+        ApplyFilters();
+    }
+
+    private void ApplyFilters()
+    {
+        var query = allEntries.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            query = query.Where(e => 
+                (e.Title != null && e.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
+                (e.Content != null && e.Content.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            );
+        }
+
+        if (startDate.HasValue)
+        {
+            query = query.Where(e => e.Date >= startDate.Value);
+        }
+        if (endDate.HasValue)
+        {
+            query = query.Where(e => e.Date <= endDate.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(selectedMood))
+        {
+            query = query.Where(e => e.PrimaryMood == selectedMood || e.SecondaryMood1 == selectedMood || e.SecondaryMood2 == selectedMood);
+        }
+
+        if (!string.IsNullOrWhiteSpace(tagFilter))
+        {
+            query = query.Where(e => e.Tags != null && e.Tags.Contains(tagFilter, StringComparison.OrdinalIgnoreCase));
+        }
+
+        filteredEntries = query.OrderByDescending(e => e.Date).ToList();
+    }
+
+    private void ViewEntry(JournalEntry entry)
+    {
+        Navigation.NavigateTo($"/entry/{entry.Id}");
+    }
+
+    private void EditEntry(JournalEntry entry)
+    {
+        Navigation.NavigateTo($"/calendar?date={entry.Date.ToString("yyyy-MM-dd")}");
+    }
 }

@@ -7,7 +7,7 @@
     <!-- App Header -->
     <div class="nav-header">
         <div class="app-logo">
-            <MudIcon Icon="@Icons.Material.Filled.Edit" Size="Size.Large" Color="Color.Primary" />
+            <MudIcon Icon="@Icons.Material.Filled.Edit" IconSize="Size.ExtraSmall" Color="Color.Primary" />
             <span class="app-title">Inkwell</span>
         </div>
     </div>
@@ -15,55 +15,52 @@
     <!-- Navigation Menu -->
     <MudNavMenu Class="nav-menu" Color="Color.Primary" Bordered="false" Rounded="false">
         <!-- Dashboard -->
-        <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard" IconColor="Color.Primary">
+        <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard" IconColor="Color.Primary" IconSize="Size.ExtraSmall">
             Dashboard
         </MudNavLink>
 
         <!-- Write Journal -->
-        <MudNavLink Href="/calendar" Icon="@Icons.Material.Filled.Edit" IconColor="Color.Secondary">
+        <MudNavLink Href="/calendar" Icon="@Icons.Material.Filled.Edit" IconColor="Color.Secondary" IconSize="Size.ExtraSmall">
             Write Journal
         </MudNavLink>
 
         <!-- Calendar View -->
-        <MudNavLink Href="/calendar-view" Icon="@Icons.Material.Filled.CalendarMonth" IconColor="Color.Tertiary">
+        <MudNavLink Href="/calendar-view" Icon="@Icons.Material.Filled.CalendarMonth" IconColor="Color.Tertiary" IconSize="Size.ExtraSmall">
             Calendar View
         </MudNavLink>
 
         <!-- Journal Entries -->
-        <MudNavLink Href="/entries" Icon="@Icons.Material.Filled.List" IconColor="Color.Info">
+        <MudNavLink Href="/entries" Icon="@Icons.Material.Filled.List" IconColor="Color.Info" IconSize="Size.ExtraSmall">
             Journal Entries
         </MudNavLink>
 
         <!-- Search & Filter -->
-        <MudNavLink Href="/search" Icon="@Icons.Material.Filled.Search" IconColor="Color.Warning">
+        <MudNavLink Href="/search" Icon="@Icons.Material.Filled.Search" IconColor="Color.Warning" IconSize="Size.ExtraSmall">
             Search & Filter
         </MudNavLink>
 
         <!-- Analytics Section -->
-        <MudNavGroup Title="Analytics" Icon="@Icons.Material.Filled.Analytics" Expanded="false">
-            <MudNavLink Href="/mood-analytics" Icon="@Icons.Material.Filled.Mood" IconColor="Color.Success">
+        <MudNavGroup Title="Analytics" Icon="@Icons.Material.Filled.Analytics" Expanded="false" IconSize="Size.ExtraSmall">
+            <MudNavLink Href="/mood-analytics" Icon="@Icons.Material.Filled.Mood" IconColor="Color.Success" IconSize="Size.ExtraSmall">
                 Mood Analytics
             </MudNavLink>
-            <MudNavLink Href="/streak-tracking" Icon="@Icons.Material.Filled.Timeline" IconColor="Color.Error">
+            <MudNavLink Href="/streak-tracking" Icon="@Icons.Material.Filled.Timeline" IconColor="Color.Error" IconSize="Size.ExtraSmall">
                 Streak Tracking
-            </MudNavLink>
-            <MudNavLink Href="/insights" Icon="@Icons.Material.Filled.Insights" IconColor="Color.Primary">
-                Insights
             </MudNavLink>
         </MudNavGroup>
 
         <!-- Management Section -->
-        <MudNavGroup Title="Management" Icon="@Icons.Material.Filled.Settings" Expanded="false">
-            <MudNavLink Href="/tags" Icon="@Icons.Material.Filled.Tag" IconColor="Color.Secondary">
+        <MudNavGroup Title="Management" Icon="@Icons.Material.Filled.Settings" Expanded="false" IconSize="Size.ExtraSmall">
+            <MudNavLink Href="/tags" Icon="@Icons.Material.Filled.Tag" IconColor="Color.Secondary" IconSize="Size.ExtraSmall">
                 Tags Management
             </MudNavLink>
-            <MudNavLink Href="/export" Icon="@Icons.Material.Filled.Download" IconColor="Color.Info">
+            <MudNavLink Href="/export" Icon="@Icons.Material.Filled.Download" IconColor="Color.Info" IconSize="Size.ExtraSmall">
                 Export Journals
             </MudNavLink>
         </MudNavGroup>
 
         <!-- Settings -->
-        <MudNavLink Href="/settings" Icon="@Icons.Material.Filled.Settings" IconColor="Color.Default">
+        <MudNavLink Href="/settings" Icon="@Icons.Material.Filled.Settings" IconColor="Color.Default" IconSize="Size.ExtraSmall">
             Settings
         </MudNavLink>
     </MudNavMenu>
@@ -73,7 +70,7 @@
         <MudDivider />
         <div class="user-info">
             <MudAvatar Size="Size.Small" Color="Color.Primary">
-                <MudIcon Icon="@Icons.Material.Filled.Person" Size="Size.Small" />
+                <MudIcon Icon="@Icons.Material.Filled.Person" IconSize="Size.Extra.Small" />
             </MudAvatar>
             <span class="user-name">@authService.CurrentUser?.Username</span>
         </div>
@@ -82,7 +79,7 @@
 
 <style>
     .nav-sidebar {
-        width: 280px;
+        width: 260px;
         height: 100vh;
         background-color: var(--mud-palette-surface);
         border-right: 1px solid var(--mud-palette-divider);
@@ -93,46 +90,56 @@
         top: 0;
         z-index: 1000;
         overflow-y: auto;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
     }
 
     .nav-header {
-        padding: 24px 20px 16px;
+        padding: 18px 16px;
         border-bottom: 1px solid var(--mud-palette-divider);
+        text-align: center;
     }
 
     .app-logo {
         display: flex;
         align-items: center;
-        gap: 12px;
+        justify-content: center;
+        gap: 8px;
     }
 
     .app-title {
-        font-size: 24px;
-        font-weight: 600;
+        font-size: 20px;
+        font-weight: 700;
         color: var(--mud-palette-primary);
         margin: 0;
+        letter-spacing: 0.5px;
     }
 
     .nav-menu {
         flex: 1;
-        padding: 16px 0;
+        padding: 8px 0;
     }
 
     .nav-menu .mud-nav-link {
-        margin: 4px 8px;
+        margin: 3px 10px;
         border-radius: 8px;
-        padding: 12px 16px;
+        padding: 10px 14px;
         font-weight: 500;
+        font-size: 0.95rem;
         transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .nav-menu .mud-nav-link:hover {
         background-color: var(--mud-palette-action-hover);
+        transform: translateX(3px);
     }
 
     .nav-menu .mud-nav-link.mud-nav-link-active {
         background-color: var(--mud-palette-primary);
         color: var(--mud-palette-primary-contrast-text);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
     .nav-menu .mud-nav-link.mud-nav-link-active .mud-icon {
@@ -140,40 +147,65 @@
     }
 
     .nav-menu .mud-nav-group {
-        margin: 8px 0;
+        margin: 4px 0;
     }
 
     .nav-menu .mud-nav-group .mud-nav-group-header {
-        padding: 12px 16px 12px 20px;
-        font-weight: 600;
+        padding: 8px 14px 8px 16px;
+        font-weight: 700;
         color: var(--mud-palette-text-secondary);
-        font-size: 14px;
+        font-size: 12px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .nav-menu .mud-nav-group .mud-nav-group-header:hover {
+        background-color: var(--mud-palette-action-hover);
     }
 
     .nav-menu .mud-nav-group .mud-nav-link {
-        padding-left: 32px;
+        padding-left: 28px;
+        font-size: 0.9rem;
     }
 
     .nav-footer {
-        padding: 16px 20px;
+        padding: 16px;
         border-top: 1px solid var(--mud-palette-divider);
+        background-color: var(--mud-palette-background);
     }
 
     .user-info {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
+        padding: 8px 8px;
+        border-radius: 8px;
+        background-color: var(--mud-palette-surface);
     }
 
     .user-name {
         font-weight: 500;
         color: var(--mud-palette-text-primary);
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    /* Dark theme adjustments */
+    @@media (max-width: 768px) {
+        .nav-sidebar {
+            width: 240px;
+            transform: translateX(-100%);
+        }
+        .nav-sidebar.open {
+            transform: translateX(0);
+        }
+    }
+
     [data-mud-theme="dark"] .nav-sidebar {
         background-color: var(--mud-palette-background-grey);
+        border-right-color: var(--mud-palette-divider);
     }
 </style>

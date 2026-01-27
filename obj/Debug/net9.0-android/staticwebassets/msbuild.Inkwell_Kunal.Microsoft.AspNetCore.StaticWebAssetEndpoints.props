@@ -52,13 +52,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Inkwell_Kunal.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"i0aknpu9t7"},{"Name":"integrity","Value":"sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="},{"Name":"label","Value":"Inkwell_Kunal.styles.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6115"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 Jan 2026 17:27:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6115"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 Jan 2026 18:00:15 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="Inkwell_Kunal.styles.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Inkwell_Kunal.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6115"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 Jan 2026 17:27:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6115"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TvVcUaDYu1Gmxu1ciXS0JoJzGyPmathUSeg3P0M4I/M=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 Jan 2026 18:00:15 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="js/editor.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\editor.js'))</AssetFile>

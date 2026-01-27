@@ -1,0 +1,188 @@
+@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Routing
+@using MudBlazor
+
+<MudPopoverProvider />
+
+<div class="layout">
+    <aside class="sidebar @(isCollapsed ? "collapsed" : "") @(isMobile ? "mobile" : "")">
+        <div class="sidebar-header">
+            @if (!isCollapsed || isMobile)
+            {
+                <h1>Inkwell</h1>
+            }
+            <button class="toggle-btn" @onclick="ToggleSidebar">
+                <span class="toggle-icon">@(isCollapsed ? "☰" : "✕")</span>
+            </button>
+        </div>
+        @if (!isCollapsed || isMobile)
+        {
+            <nav class="sidebar-nav">
+                <NavLink class="nav-link" href="/">Dashboard</NavLink>
+                <NavLink class="nav-link" href="/calendar">Calendar</NavLink>
+                <NavLink class="nav-link" href="/entries">Entries</NavLink>
+                <NavLink class="nav-link" href="/search">Search</NavLink>
+                <NavLink class="nav-link" href="/tags">Tags</NavLink>
+                <NavLink class="nav-link" href="/mood-analytics">Mood Analytics</NavLink>
+                <NavLink class="nav-link" href="/insights">Insights</NavLink>
+                <NavLink class="nav-link" href="/streak-tracking">Streak Tracking</NavLink>
+                <NavLink class="nav-link" href="/settings">Settings</NavLink>
+                <NavLink class="nav-link" href="/export">Export</NavLink>
+            </nav>
+        }
+    </aside>
+    @if (isMobile && isCollapsed)
+    {
+        <div class="overlay" @onclick="CloseSidebar"></div>
+    }
+    <main class="main-content @(isCollapsed && !isMobile ? "expanded" : "")">
+        @Body
+    </main>
+</div>
+
+<style>
+    .layout {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f7fafc;
+    }
+    .sidebar {
+        width: 250px;
+        background-color: #ffffff;
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+        transition: width 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+    }
+    .sidebar.collapsed {
+        width: 60px;
+    }
+    .sidebar.mobile {
+        transform: translateX(-100%);
+    }
+    .sidebar.mobile:not(.collapsed) {
+        transform: translateX(0);
+    }
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .sidebar-header h1 {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 24px;
+        color: #4a5568;
+        margin: 0;
+        transition: opacity 0.3s ease;
+    }
+    .sidebar.collapsed .sidebar-header h1 {
+        opacity: 0;
+    }
+    .toggle-btn {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #4a5568;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+    .toggle-btn:hover {
+        background-color: #e2e8f0;
+    }
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .nav-link {
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: #2d3748;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    .sidebar.collapsed .nav-link {
+        padding: 0.75rem;
+        text-align: center;
+        font-size: 12px;
+    }
+    .nav-link:hover {
+        background-color: #e2e8f0;
+    }
+    .nav-link.active {
+        background-color: #68d391;
+        color: #ffffff;
+    }
+    .main-content {
+        flex: 1;
+        margin-left: 250px;
+        padding: 2rem;
+        transition: margin-left 0.3s ease;
+    }
+    .main-content.expanded {
+        margin-left: 60px;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    @@media (max-width: 768px) {
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            z-index: 1000;
+        }
+        .sidebar.collapsed {
+            width: 0;
+        }
+        .main-content {
+            margin-left: 0;
+        }
+        .main-content.expanded {
+            margin-left: 0;
+        }
+    }
+</style>
+
+@code {
+    private bool isCollapsed = false;
+    private bool isMobile = false;
+
+    protected override void OnInitialized()
+    {
+        CheckScreenSize();
+    }
+
+    private void ToggleSidebar()
+    {
+        isCollapsed = !isCollapsed;
+    }
+
+    private void CloseSidebar()
+    {
+        if (isMobile)
+        {
+            isCollapsed = true;
+        }
+    }
+
+    private void CheckScreenSize()
+    {
+        // Use JS interop to check screen size if needed, for now assume based on media query
+        // For simplicity, set isMobile based on window.innerWidth < 768
+        // In real app, use IJSRuntime
+        isMobile = false; // Placeholder, implement with JS if necessary
+    }
+}

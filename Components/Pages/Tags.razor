@@ -1,30 +1,292 @@
 @page "/tags"
 @inject JournalService journalService
 @inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
+@using Inkwell_Kunal.Data
 
 <PageTitle>Tags Management - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">🏷️ Tags Management</h3>
+<div class="tags-container">
+    <div class="tags-header">
+        <h3>Tags Management</h3>
+        <p class="subtitle">Organize and manage your journal tags</p>
+    </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-muted">Manage and organize your journal tags.</p>
+    <div class="tags-search">
+        <input type="text" class="form-control" placeholder="Search tags..." @bind="searchTerm" @bind:event="oninput" />
+    </div>
 
-                    <div class="text-center mt-4">
-                        <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo('/dashboard')">
-                            Back to Dashboard
+    @if (filteredTags.Any())
+    {
+        <div class="tags-stats">
+            <div class="stat-card">
+                <div class="stat-number">@uniqueTags.Count</div>
+                <div class="stat-label">Total Tags</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@totalTagUsage</div>
+                <div class="stat-label">Total Uses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@(totalTagUsage > 0 ? (totalTagUsage / (double)uniqueTags.Count).ToString("F1") : "0")</div>
+                <div class="stat-label">Avg Uses/Tag</div>
+            </div>
+        </div>
+
+        <div class="tags-grid">
+            @foreach (var tag in filteredTags)
+            {
+                var count = tagCounts.GetValueOrDefault(tag, 0);
+                var percentage = (double)count / totalTagUsage * 100;
+                <div class="tag-card">
+                    <div class="tag-header">
+                        <h5 class="tag-name">@tag</h5>
+                        <span class="tag-badge">@count</span>
+                    </div>
+                    <div class="tag-bar-container">
+                        <div class="tag-bar" style="width: @(percentage)%"></div>
+                    </div>
+                    <div class="tag-footer">
+                        <small>@percentage.ToString("F1")% of all tags</small>
+                        <button class="btn btn-sm btn-outline-primary" @onclick="() => ViewEntriesByTag(tag)">
+                            View Entries
                         </button>
                     </div>
                 </div>
-            </div>
+            }
         </div>
-    </div>
+    }
+    else if (!string.IsNullOrWhiteSpace(searchTerm))
+    {
+        <div class="no-results">
+            <p>No tags match your search.</p>
+        </div>
+    }
+    else
+    {
+        <div class="no-results">
+            <p>No tags found. Start journaling to create tags!</p>
+        </div>
+    }
 </div>
 
+<style>
+    .tags-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .tags-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .tags-header h3 {
+        color: #2d3748;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        color: #718096;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .tags-search {
+        margin-bottom: 2rem;
+    }
+
+    .tags-search .form-control {
+        padding: 12px 16px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s ease;
+    }
+
+    .tags-search .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .tags-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-card:nth-child(2) {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .stat-card:nth-child(3) {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+
+    .tags-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .tag-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        border-left: 4px solid #667eea;
+    }
+
+    .tag-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .tag-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .tag-name {
+        color: #2d3748;
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .tag-badge {
+        background-color: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .tag-bar-container {
+        height: 8px;
+        background-color: #e2e8f0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+
+    .tag-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transition: width 0.3s ease;
+    }
+
+    .tag-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tag-footer small {
+        color: #718096;
+        font-size: 0.85rem;
+    }
+
+    .tag-footer .btn {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 3rem 2rem;
+        background-color: #f7fafc;
+        border-radius: 12px;
+    }
+
+    .no-results p {
+        color: #718096;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    @@media (max-width: 768px) {
+        .tags-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tags-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
 @code {
-    [Inject] NavigationManager Navigation { get; set; } = default!;
+    private List<string> uniqueTags = new();
+    private List<string> filteredTags = new();
+    private Dictionary<string, int> tagCounts = new();
+    private string searchTerm = "";
+    private int totalTagUsage = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var entries = await journalService.GetAllEntriesAsync();
+        var allTags = entries
+            .Where(e => !string.IsNullOrEmpty(e.Tags))
+            .SelectMany(e => e.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries))
+            .Select(t => t.Trim())
+            .Where(t => !string.IsNullOrEmpty(t))
+            .ToList();
+
+        tagCounts = allTags
+            .GroupBy(t => t, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(g => g.Key, g => g.Count(), StringComparer.OrdinalIgnoreCase);
+
+        uniqueTags = tagCounts.Keys.OrderByDescending(t => tagCounts[t]).ToList();
+        totalTagUsage = allTags.Count;
+        filteredTags = uniqueTags;
+    }
+
+    private void FilterTags()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredTags = uniqueTags;
+        }
+        else
+        {
+            filteredTags = uniqueTags
+                .Where(t => t.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+    }
+
+    private void ViewEntriesByTag(string tag)
+    {
+        Navigation.NavigateTo($"/search?tag={Uri.EscapeDataString(tag)}");
+    }
 }

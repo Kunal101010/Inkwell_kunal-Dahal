@@ -1,6 +1,4 @@
 using Inkwell_Kunal.Data;
-using System.Security.Cryptography;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inkwell_Kunal.Services;
@@ -20,15 +18,12 @@ public class AuthenticationService
 
     private string HashPassword(string password)
     {
-        using var sha256 = SHA256.Create();
-        var bytes = Encoding.UTF8.GetBytes(password);
-        var hash = sha256.ComputeHash(bytes);
-        return Convert.ToBase64String(hash);
+        return BCrypt.Net.BCrypt.HashPassword(password);
     }
 
     private bool VerifyPassword(string password, string hash)
     {
-        return HashPassword(password) == hash;
+        return BCrypt.Net.BCrypt.Verify(password, hash);
     }
 
     public User? CurrentUser => _currentUser;
@@ -83,5 +78,31 @@ public class AuthenticationService
     public async Task<List<User>> GetAllUsersAsync()
     {
         return await _db.Users.ToListAsync();
+    }
+
+    public async Task<bool> ChangePasswordAsync(string currentPassword, string newPassword)
+    {
+        if (CurrentUser == null) return false;
+
+        // Verify current password
+        if (!VerifyPassword(currentPassword, CurrentUser.PasswordHash))
+        {
+            return false;
+        }
+
+        // Hash new password
+        var newHash = HashPassword(newPassword);
+
+        // Update in database
+        var user = await _db.Users.FindAsync(CurrentUser.Id);
+        if (user == null) return false;
+
+        user.PasswordHash = newHash;
+        await _db.SaveChangesAsync();
+
+        // Update current user
+        CurrentUser.PasswordHash = newHash;
+
+        return true;
     }
 }

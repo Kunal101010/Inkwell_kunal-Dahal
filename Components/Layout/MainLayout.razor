@@ -10,17 +10,17 @@
     </div>
 
     <main>
-        <!-- This is the top row where the theme toggle goes -->
-        <div class="top-row px-4 d-flex justify-content-between align-items-center">
-            <div>
+        <!-- Top Row with Theme Toggle and Logout -->
+        <div class="top-row">
+            <div class="top-row-content">
                 @if (AuthService.IsAuthenticated)
                 {
-                    <span class="text-muted">Logged in as: @AuthService.CurrentUser?.Username</span>
+                    <span class="user-logged-in">Logged in as: @AuthService.CurrentUser?.Username</span>
                 }
             </div>
-            <div>
-                <button @onclick="ThemeService.ToggleTheme" class="btn btn-link me-2">
-                    @(ThemeService.IsDarkMode ? "☀️ Light" : "🌙 Dark")
+            <div class="top-row-actions">
+                <button @onclick="ThemeService.ToggleTheme" class="btn btn-theme-toggle" title="Toggle theme">
+                    @(ThemeService.IsDarkMode ? "Light Mode" : "Dark Mode")
                 </button>
                 @if (AuthService.IsAuthenticated)
                 {
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <article class="content px-4">
+        <article class="content">
             @if (!AuthService.IsAuthenticated && NavManager.Uri != NavManager.BaseUri)
             {
                 <div class="alert alert-warning text-center">
@@ -43,6 +43,121 @@
         </article>
     </main>
 </div>
+
+<style>
+    .page {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        z-index: 1000;
+    }
+
+    main {
+        flex: 1;
+        margin-left: 260px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-row {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .top-row-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .user-logged-in {
+        color: #718096;
+        font-size: 0.95rem;
+    }
+
+    .top-row-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn-theme-toggle {
+        background-color: #667eea;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-theme-toggle:hover {
+        background-color: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    }
+
+    .content {
+        flex: 1;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .page.dark {
+        background-color: #1a202c;
+        color: #e2e8f0;
+    }
+
+    .page.dark main {
+        background-color: #2d3748;
+    }
+
+    .page.dark .top-row {
+        background-color: #2d3748;
+        border-bottom-color: #4a5568;
+    }
+
+    .page.dark .user-logged-in {
+        color: #cbd5e0;
+    }
+
+    @@media (max-width: 768px) {
+        .sidebar {
+            width: 240px;
+        }
+
+        main {
+            margin-left: 240px;
+        }
+
+        .top-row {
+            padding: 1rem;
+        }
+
+        .top-row-actions {
+            gap: 0.5rem;
+        }
+
+        .btn-theme-toggle {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+    }
+</style>
 
 @code {
     protected override void OnInitialized()

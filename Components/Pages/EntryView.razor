@@ -1,0 +1,114 @@
+@page "/entry/{id:int}"
+@inject JournalService journalService
+@inject AuthenticationService authService
+@inject NavigationManager Navigation
+@using Inkwell_Kunal.Services
+@using Inkwell_Kunal.Data
+@inject IJSRuntime JSRuntime
+
+<PageTitle>View Entry - Inkwell Journal</PageTitle>
+
+<div class="entry-view-container">
+    @if (entry == null)
+    {
+        <p>Entry not found.</p>
+    }
+    else if (entry.IsLocked && !isUnlocked)
+    {
+        <div class="locked-entry">
+            <h3>This entry is locked</h3>
+            <p>Enter the password to view the content.</p>
+            <input type="password" class="form-control" @bind="password" placeholder="Password" />
+            <button class="btn btn-primary mt-2" @onclick="UnlockEntry">Unlock</button>
+            @if (!string.IsNullOrEmpty(unlockMessage))
+            {
+                <div class="alert alert-danger mt-2">@unlockMessage</div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="entry-details">
+            <h3>@entry.Title</h3>
+            <p><strong>Date:</strong> @entry.Date.ToShortDateString()</p>
+            <p><strong>Mood:</strong> @entry.PrimaryMood</p>
+            @if (!string.IsNullOrWhiteSpace(entry.SecondaryMood1))
+            {
+                <p><strong>Secondary Mood 1:</strong> @entry.SecondaryMood1</p>
+            }
+            @if (!string.IsNullOrWhiteSpace(entry.SecondaryMood2))
+            {
+                <p><strong>Secondary Mood 2:</strong> @entry.SecondaryMood2</p>
+            }
+            @if (!string.IsNullOrWhiteSpace(entry.Tags))
+            {
+                <p><strong>Tags:</strong> @entry.Tags</p>
+            }
+            <div class="entry-content">
+                @((MarkupString)entry.Content)
+            </div>
+            <button class="btn btn-secondary mt-3" @onclick="GoBack">Back</button>
+        </div>
+    }
+</div>
+
+<style>
+    .entry-view-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .locked-entry {
+        text-align: center;
+        padding: 2rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+    .entry-details {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .entry-content {
+        margin-top: 1rem;
+        line-height: 1.6;
+    }
+</style>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private JournalEntry? entry;
+    private bool isUnlocked = false;
+    private string password = "";
+    private string unlockMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        entry = await journalService.GetEntryByIdAsync(Id);
+        if (entry != null && !entry.IsLocked)
+        {
+            isUnlocked = true;
+        }
+    }
+
+    private async Task UnlockEntry()
+    {
+        if (entry == null) return;
+        var success = await journalService.UnlockEntryAsync(entry.Date, password);
+        if (success)
+        {
+            isUnlocked = true;
+            entry = await journalService.GetEntryByIdAsync(entry.Id); // Refresh to get full content
+        }
+        else
+        {
+            unlockMessage = "Incorrect password.";
+        }
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/entries");
+    }
+}

@@ -105,6 +105,11 @@ public class JournalService
                 a.CommandText = sql;
                 a.ExecuteNonQuery();
             }
+
+            // Drop old index if exists to allow new composite index
+            using var dropIndexCmd = conn.CreateCommand();
+            dropIndexCmd.CommandText = "DROP INDEX IF EXISTS IX_JournalEntries_Date;";
+            dropIndexCmd.ExecuteNonQuery();
         }
         finally
         {
@@ -123,14 +128,90 @@ public class JournalService
     };
 
     // Get entry for a specific date
+    public async Task<JournalEntry?> GetEntryByIdAsync(int id)
+{
+    if (_auth.CurrentUser == null) return null;
+    var entry = await _db.JournalEntries
+        .FirstOrDefaultAsync(e => e.Id == id && e.UserId == _auth.CurrentUser.Id);
+    if (entry != null && entry.IsLocked)
+    {
+        return new JournalEntry
+        {
+            Id = entry.Id,
+            Date = entry.Date,
+            Content = "[This entry is locked. Please unlock to view content.]",
+            CreatedAt = entry.CreatedAt,
+            UpdatedAt = entry.UpdatedAt,
+            PrimaryMood = entry.PrimaryMood,
+            SecondaryMood1 = entry.SecondaryMood1,
+            SecondaryMood2 = entry.SecondaryMood2,
+            Tags = entry.Tags,
+            UserId = entry.UserId,
+            IsLocked = true
+        };
+    }
+    return entry;
+}
+
+    // Create or Update entry
+    public async Task SaveEntryAsync(DateTime date, string content, string? title, string? primaryMood, string? secondaryMood1, string? secondaryMood2, string? tags)
+    {
+        if (_auth.CurrentUser == null) 
+            throw new InvalidOperationException("User not authenticated");
+
+        try
+        {
+            var entry = await GetEntryAsync(date);
+
+            if (entry == null)
+            {
+                // Create new entry
+                entry = new JournalEntry
+                {
+                    Date = date.Date,
+                    Content = content?.Trim() ?? "",
+                    Title = title?.Trim(),
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    PrimaryMood = primaryMood,
+                    SecondaryMood1 = secondaryMood1,
+                    SecondaryMood2 = secondaryMood2,
+                    Tags = tags?.Trim(),
+                    UserId = _auth.CurrentUser.Id,
+                    IsLocked = false
+                };
+                _db.JournalEntries.Add(entry);
+            }
+            else
+            {
+                // Update existing entry
+                entry.Content = content?.Trim() ?? "";
+                entry.Title = title?.Trim();
+                entry.PrimaryMood = primaryMood;
+                entry.SecondaryMood1 = secondaryMood1;
+                entry.SecondaryMood2 = secondaryMood2;
+                entry.Tags = tags?.Trim();
+                entry.UpdatedAt = DateTime.Now;
+            }
+
+            await _db.SaveChangesAsync();
+            OnChange?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException($"Error saving entry: {ex.Message}", ex);
+        }
+    }
+
     public async Task<JournalEntry?> GetEntryAsync(DateTime date)
     {
         if (_auth.CurrentUser == null) return null;
+        
         var entry = await _db.JournalEntries
             .FirstOrDefaultAsync(e => e.Date.Date == date.Date && e.UserId == _auth.CurrentUser.Id);
+        
         if (entry != null && entry.IsLocked)
         {
-            // Return a copy with content hidden
             return new JournalEntry
             {
                 Id = entry.Id,
@@ -147,46 +228,6 @@ public class JournalService
             };
         }
         return entry;
-    }
-
-    // Create or Update entry
-    public async Task SaveEntryAsync(DateTime date, string content, string? title, string? primaryMood, string? secondaryMood1, string? secondaryMood2, string? tags)
-    {
-        if (_auth.CurrentUser == null) return;
-
-        var entry = await GetEntryAsync(date);
-
-        if (entry == null)
-        {
-            // Create new
-            entry = new JournalEntry
-            {
-                Date = date.Date,
-                Content = content.Trim(),
-                Title = title?.Trim(),
-                CreatedAt = DateTime.Now,
-                PrimaryMood = primaryMood,
-                SecondaryMood1 = secondaryMood1,
-                SecondaryMood2 = secondaryMood2,
-                Tags = tags?.Trim(),
-                UserId = _auth.CurrentUser.Id
-            };
-            _db.JournalEntries.Add(entry);
-        }
-        else
-        {
-            // Update existing
-            entry.Content = content.Trim();
-            entry.Title = title?.Trim();
-            entry.PrimaryMood = primaryMood;
-            entry.SecondaryMood1 = secondaryMood1;
-            entry.SecondaryMood2 = secondaryMood2;
-            entry.Tags = tags?.Trim();
-            entry.UpdatedAt = DateTime.Now;
-        }
-
-        await _db.SaveChangesAsync();
-        OnChange?.Invoke(); // This notifies the UI
     }
 
     // Get mood counts across all entries
@@ -245,7 +286,19 @@ public class JournalService
             OnChange?.Invoke(); // Notify UI
         }
     }
-     public async Task<List<JournalEntry>> GetAllEntriesAsync()
+
+    public async Task DeleteEntryAsync(int id)
+    {
+        var entry = await _db.JournalEntries.FindAsync(id);
+        if (entry != null)
+        {
+            _db.JournalEntries.Remove(entry);
+            await _db.SaveChangesAsync();
+            OnChange?.Invoke();
+        }
+    }
+
+    public async Task<List<JournalEntry>> GetAllEntriesAsync()
     {
         if (_auth.CurrentUser == null) return new List<JournalEntry>();
         return await _db.JournalEntries
@@ -286,7 +339,6 @@ public class JournalService
 
         // Longest streak (scan runs)
         int longest = 0;
-        // We'll iterate through set and expand runs only from starts
         foreach (var d in set)
         {
             if (set.Contains(d.AddDays(-1)))

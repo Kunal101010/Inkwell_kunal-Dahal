@@ -8,51 +8,82 @@
 
 <PageTitle>Export Journals - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">📤 Export Journals</h3>
+<div class="export-container">
+    <h3>Export Journals</h3>
+    <div class="export-card">
+        <p class="text-muted">Export your journal entries to PDF format.</p>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-muted">Export your journal entries to PDF format.</p>
-
-                    <!-- Date Range Selection -->
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" @bind="exportFromDate" />
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">End Date</label>
-                            <input type="date" class="form-control" @bind="exportToDate" />
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-success btn-lg" @onclick="ExportToPdf" disabled="@isExporting">
-                            @if (isExporting)
-                            {
-                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-                                Exporting
-                            }
-                            else
-                            {
-                                <span>📄 Export to PDF</span>
-                            }
-                        </button>
-                    </div>
-
-                    @if (!string.IsNullOrEmpty(message))
-                    {
-                        <div class="alert alert-info mt-3">@message</div>
-                    }
-                </div>
+        <!-- Date Range Selection -->
+        <div class="date-grid">
+            <div class="date-field">
+                <label class="form-label">Start Date</label>
+                <input type="date" class="form-control" @bind="exportFromDate" />
+            </div>
+            <div class="date-field">
+                <label class="form-label">End Date</label>
+                <input type="date" class="form-control" @bind="exportToDate" />
             </div>
         </div>
+
+        <div class="export-button">
+            <button class="btn btn-success btn-lg" @onclick="ExportToPdf" disabled="@isExporting">
+                @if (isExporting)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                    <span>Exporting</span>
+                }
+                else
+                {
+                    <span>Export to PDF</span>
+                }
+            </button>
+        </div>
+
+        @if (!string.IsNullOrEmpty(message))
+        {
+            <div class="alert alert-info">@message</div>
+        }
     </div>
 </div>
+
+<style>
+    .export-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .export-container h3 {
+        color: #2d3748;
+        margin-bottom: 2rem;
+    }
+    .export-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        transition: transform 0.3s ease;
+    }
+    .export-card:hover {
+        transform: translateY(-2px);
+    }
+    .date-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .date-field label {
+        color: #4a5568;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    .export-button {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .alert {
+        border-radius: 8px;
+    }
+</style>
 
 @code {
     [Inject] NavigationManager Navigation { get; set; } = default!;

@@ -1,93 +1,161 @@
 @page "/settings"
 @inject ThemeService themeService
 @inject AuthenticationService authService
+@inject NavigationManager Navigation
 @using Inkwell_Kunal.Services
 
 <PageTitle>Settings - Inkwell Journal</PageTitle>
 
-<h3 class="text-center my-5">⚙️ Settings</h3>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <!-- Theme Settings -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-header">
-                    <h5 class="mb-0">🎨 Theme Customization</h5>
-                </div>
-                <div class="card-body">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="darkModeSwitch"
-                               checked="@themeService.IsDarkMode" @onchange="ToggleTheme" />
-                        <label class="form-check-label" for="darkModeSwitch">
-                            Dark Mode
-                        </label>
-                    </div>
-                    <small class="text-muted">Toggle between light and dark themes</small>
-                </div>
+<div class="settings-container">
+    <h3>Settings</h3>
+    <div class="settings-grid">
+        <!-- Theme Settings -->
+        <div class="settings-card">
+            <h5>Theme Customization</h5>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="darkModeSwitch"
+                       checked="@themeService.IsDarkMode" @onchange="ToggleTheme" />
+                <label class="form-check-label" for="darkModeSwitch">
+                    Dark Mode
+                </label>
             </div>
+            <small class="text-muted">Toggle between light and dark themes</small>
+        </div>
 
-            <!-- Security & Privacy -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-header">
-                    <h5 class="mb-0">🔒 Security & Privacy</h5>
+        <!-- Security & Privacy -->
+        <div class="settings-card">
+            <h5>Security & Privacy</h5>
+            <p class="text-muted">Security settings.</p>
+            <h6>Change Password</h6>
+            <form @onsubmit="ChangePassword" @onsubmit:preventDefault="true">
+                <div class="mb-3">
+                    <label for="currentPassword" class="form-label">Current Password</label>
+                    <input type="password" class="form-control" id="currentPassword" @bind="currentPassword" required />
                 </div>
-                <div class="card-body">
-                    <p class="text-muted">Security settings.</p>
-                    <div class="text-center">
-                        <button class="btn btn-outline-primary" disabled>
-                            Change Password
-                        </button>
-                        <button class="btn btn-outline-primary ms-2" disabled>
-                            Two-Factor Authentication
-                        </button>
-                    </div>
+                <div class="mb-3">
+                    <label for="newPassword" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="newPassword" @bind="newPassword" required />
                 </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" @bind="confirmPassword" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+            @if (!string.IsNullOrEmpty(passwordMessage))
+            {
+                <div class="alert alert-@passwordAlertClass mt-3">@passwordMessage</div>
+            }
+           
+        </div>
+
+        <!-- Account Information -->
+        <div class="settings-card">
+            <h5>Account Information</h5>
+            <div class="info-row">
+                <strong>Username:</strong> @(authService.CurrentUser?.Username ?? "N/A")
             </div>
-
-            <!-- Account Information -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-header">
-                    <h5 class="mb-0">👤 Account Information</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong>Username:</strong> @authService.CurrentUser?.Username
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>Member since:</strong> @authService.CurrentUser?.CreatedAt.ToString("MMMM yyyy")
-                        </div>
-                    </div>
-                </div>
+            <div class="info-row">
+                <strong>Member since:</strong> @(authService.CurrentUser?.CreatedAt.ToString("MMMM yyyy") ?? "N/A")
             </div>
+        </div>
 
-            <!-- Data Management -->
-            <div class="card shadow-sm">
-                <div class="card-header">
-                    <h5 class="mb-0">💾 Data Management</h5>
-                </div>
-                <div class="card-body">
-                    <p class="text-muted">Export or delete your journal data.</p>
-                    <div class="text-center">
-                        <button class="btn btn-outline-success" @onclick="() => Navigation.NavigateTo('/export')">
-                            Export Data
-                        </button>
-                        <button class="btn btn-outline-danger ms-2" disabled>
-                            Delete Account
-                        </button>
-                    </div>
-                </div>
+        <!-- Data Management -->
+        <div class="settings-card">
+            <h5>Data Management</h5>
+            <p class="text-muted">Export or delete your journal data.</p>
+            <div class="button-group">
+                <button class="btn btn-outline-success" @onclick="ExportData">
+                    Export Data
+                </button>
+                <button class="btn btn-outline-danger" disabled>
+                    Delete Account
+                </button>
             </div>
         </div>
     </div>
 </div>
 
+<style>
+    .settings-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .settings-container h3 {
+        color: #2d3748;
+        margin-bottom: 2rem;
+    }
+    .settings-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    .settings-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+    .settings-card:hover {
+        transform: translateY(-2px);
+    }
+    .settings-card h5 {
+        color: #4a5568;
+        margin-bottom: 1rem;
+    }
+    .button-group {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .info-row {
+        margin-bottom: 0.5rem;
+        color: #2d3748;
+    }
+</style>
+
 @code {
-    [Inject] NavigationManager Navigation { get; set; } = default!;
+    private string currentPassword = "";
+    private string newPassword = "";
+    private string confirmPassword = "";
+    private string passwordMessage = "";
+    private string passwordAlertClass = "info";
 
     private void ToggleTheme()
     {
         themeService.ToggleTheme();
+    }
+
+    private async Task ChangePassword()
+    {
+        currentPassword = currentPassword.Trim();
+        newPassword = newPassword.Trim();
+        confirmPassword = confirmPassword.Trim();
+
+        if (newPassword != confirmPassword)
+        {
+            passwordMessage = "New passwords do not match.";
+            passwordAlertClass = "danger";
+            return;
+        }
+
+        var success = await authService.ChangePasswordAsync(currentPassword, newPassword);
+        if (success)
+        {
+            passwordMessage = "Password changed successfully.";
+            passwordAlertClass = "success";
+            currentPassword = newPassword = confirmPassword = "";
+        }
+        else
+        {
+            passwordMessage = "Failed to change password. Check current password.";
+            passwordAlertClass = "danger";
+        }
+    }
+
+    private void ExportData()
+    {
+        Navigation.NavigateTo("/export");
     }
 }
